@@ -14,7 +14,7 @@ const inter = Inter({
 
 export const metadata = {
   metadataBase: new URL("https://www.bcconciergerie.com"),
-    title: "B&C Conciergerie",
+  title: "B&C Conciergerie",
   description:
     "Conciergerie haut de gamme sur la Côte d'Azur. Gestion locative Airbnb, ménage professionnel, revenus optimisés. Nice, Monaco, Cannes. Devis gratuit.",
   keywords: [
@@ -76,7 +76,11 @@ export const metadata = {
     images: ["https://www.bcconciergerie.com/icon_new.png"],
   },
   alternates: {
-    canonical: "https://www.bcconciergerie.com",
+    canonical: "https://www.bcconciergerie.com/fr",
+    languages: {
+      fr: "https://www.bcconciergerie.com/fr",
+      en: "https://www.bcconciergerie.com/en",
+    },
   },
   other: {
     "geo.region": "FR-06",
@@ -245,9 +249,7 @@ export default function RootLayout({ children }) {
       </head>
       <body className={inter.variable}>
         <LanguageProvider>
-          <Navbar />
-          <main className="site-main">{children}</main>
-          <Footer />
+          {children}
         </LanguageProvider>
         {/* Analytics loaded after interactive - non-blocking */}
         <Analytics />

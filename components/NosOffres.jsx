@@ -1,59 +1,44 @@
-'use client';
-
-import { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
 import './NosOffres.css';
-import { useLanguage } from '@/context/LanguageContext';
+import AnimateInView from './AnimateInView';
 
-export default function NosOffres() {
-  const [inView, setInView] = useState(false);
-  const sectionRef = useRef(null);
-  const { t } = useLanguage();
-
-  useEffect(() => {
-    const currentRef = sectionRef.current;
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setInView(true);
-          observer.unobserve(entry.target);
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    if (currentRef) {
-      observer.observe(currentRef);
-    }
-
-    return () => {
-      if (currentRef) {
-        observer.unobserve(currentRef);
-      }
-    };
-  }, []);
-
+/**
+ * Nos Offres Section — SERVER COMPONENT
+ * Displays two offer cards with links to the offers page.
+ * All text is passed as props from the server page for SSR/SEO.
+ */
+export default function NosOffres({
+  title,
+  subtitle,
+  launchTitle,
+  launchBadge,
+  launchDesc,
+  launchButton,
+  partnerTitle,
+  partnerDesc,
+  partnerButton,
+}) {
   return (
-    <section className="nos-offres-section" ref={sectionRef}>
-      <div className="nos-offres-container">
-        <h2 className={`nos-offres-title ${inView ? 'animate' : ''}`}>{t('nosOffres.title')}</h2>
-        <p className={`nos-offres-subtitle ${inView ? 'animate' : ''}`}>{t('nosOffres.subtitle')}</p>
-        
-        <div className={`offres-grid ${inView ? 'animate' : ''}`}>
+    <section className="nos-offres-section">
+      <AnimateInView className="nos-offres-container" threshold={0.1}>
+        <h2 className="nos-offres-title animate">{title}</h2>
+        <p className="nos-offres-subtitle animate">{subtitle}</p>
+
+        <div className="offres-grid animate">
           {/* Offre Lancement Card */}
           <div className="offre-card">
             <div className="offre-icon">
               <span className="offre-emoji" role="img" aria-label="celebration">🎉</span>
             </div>
-            
-            <h3 className="offre-title">{t('nosOffres.launchTitle')}</h3>
-            <p className="offre-badge">{t('nosOffres.launchBadge')}</p>
-            
+
+            <h3 className="offre-title">{launchTitle}</h3>
+            <p className="offre-badge">{launchBadge}</p>
+
             <p className="offre-description">
-              {t('nosOffres.launchDesc')}
+              {launchDesc}
             </p>
-            
-            <Link href="/offres" className="offre-button">{t('nosOffres.launchButton')}</Link>
+
+            <Link href="/offres" className="offre-button">{launchButton}</Link>
           </div>
 
           {/* Offre Partenaire Card */}
@@ -61,17 +46,17 @@ export default function NosOffres() {
             <div className="offre-icon">
               <span className="offre-emoji" role="img" aria-label="celebration">🎉</span>
             </div>
-            
-            <h3 className="offre-title">{t('nosOffres.partnerTitle')}</h3>
-            
+
+            <h3 className="offre-title">{partnerTitle}</h3>
+
             <p className="offre-description">
-              {t('nosOffres.partnerDesc')}
+              {partnerDesc}
             </p>
-            
-            <Link href="/offres" className="offre-button">{t('nosOffres.partnerButton')}</Link>
+
+            <Link href="/offres" className="offre-button">{partnerButton}</Link>
           </div>
         </div>
-      </div>
+      </AnimateInView>
     </section>
   );
 }

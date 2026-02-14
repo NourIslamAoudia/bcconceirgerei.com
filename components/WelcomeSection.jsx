@@ -1,40 +1,31 @@
-'use client';
-
-import React, { useRef } from 'react';
 import Image from 'next/image';
 import './WelcomeSection.css';
-import useInView from '../hooks/useInView';
-import { useLanguage } from '@/context/LanguageContext';
+import AnimateInView from './AnimateInView';
 
 /**
- * WelcomeSection Component
- * Text content on the left, three photos grid on the right
- * Introduces B&C Conciergerie Côte d'Azur
- * Client Component - uses custom hook
+ * WelcomeSection Component — SERVER COMPONENT
+ * Text content on the left, three photos grid on the right.
+ * All text is passed as props from the server page for SSR/SEO.
  */
-const WelcomeSection = () => {
-  const ref = useRef(null);
-  const visible = useInView(ref, { threshold: 0.12 });
-  const { t } = useLanguage();
-
+export default function WelcomeSection({ title, subtitle, description1, description2, description3 }) {
   return (
     <section className="welcome-section">
-      <div ref={ref} className={`welcome-container ${visible ? 'is-visible' : ''}`}>
+      <AnimateInView className="welcome-container" threshold={0.12}>
         {/* Left side - Text content */}
         <div className="welcome-text">
           <h2 className="welcome-title">
-            {t('welcome.title')}
+            {title}
             <br />
-            {t('welcome.subtitle')}
+            {subtitle}
           </h2>
           <p className="welcome-description">
-            {t('welcome.description1')}
+            {description1}
           </p>
           <p className="welcome-description">
-            {t('welcome.description2')}
+            {description2}
           </p>
           <p className="welcome-description">
-            {t('welcome.description3')}
+            {description3}
           </p>
         </div>
 
@@ -75,9 +66,7 @@ const WelcomeSection = () => {
             />
           </div>
         </div>
-      </div>
+      </AnimateInView>
     </section>
   );
-};
-
-export default WelcomeSection;
+}

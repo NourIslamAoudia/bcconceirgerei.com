@@ -4,9 +4,11 @@
 User-agent: *
 Allow: /
 
-# Disallow admin or private areas (if any)
+# Disallow admin, private, and API areas
 Disallow: /admin/
 Disallow: /private/
+Disallow: /api/
+Disallow: /_next/
 
 # Sitemap location
 Sitemap: https://www.bcconciergerie.com/sitemap.xml

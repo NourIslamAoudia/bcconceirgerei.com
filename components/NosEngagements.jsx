@@ -1,87 +1,51 @@
-'use client';
-
-import React, { useRef } from 'react';
 import Image from 'next/image';
 import './NosEngagements.css';
-import useInView from '../hooks/useInView';
-import { useLanguage } from '@/context/LanguageContext';
+import AnimateInView from './AnimateInView';
 
 /**
- * Nos Engagements Section
- * Two-column layout: left side with badge, title and checklist; right side with image
- * Client Component - uses custom hook
+ * Nos Engagements Section — SERVER COMPONENT
+ * Two-column layout: left side with badge, title and checklist; right side with image.
+ * All text is passed as props from the server page for SSR/SEO.
  */
-const NosEngagements = () => {
-  const ref = useRef(null);
-  const visible = useInView(ref, { threshold: 0.15 });
-  const { t } = useLanguage();
+export default function NosEngagements({ badge, title, description, item1, item2, item3, item4 }) {
+  const items = [item1, item2, item3, item4];
 
   return (
     <section className="nos-engagements-section">
-      <div ref={ref} className={`nos-engagements-container ${visible ? 'is-visible' : ''}`}>
+      <AnimateInView className="nos-engagements-container" threshold={0.15}>
         <div className="nos-engagements-content">
-          <div className="engagements-badge">{t('nosEngagements.badge')}</div>
+          <div className="engagements-badge">{badge}</div>
 
-          <h2 className="engagements-title">{t('nosEngagements.title')}</h2>
+          <h2 className="engagements-title">{title}</h2>
 
-          <p className="engagements-desc">{t('nosEngagements.description')}</p>
+          <p className="engagements-desc">{description}</p>
 
           <div className="engagements-checklist">
-            <div className="checklist-item">
-              <span className="check-icon" aria-hidden="true">
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <circle cx="10" cy="10" r="10" fill="currentColor"/>
-                  <path d="M6 10l3 3 5-6" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-              </span>
-              <span className="checklist-text">{t('nosEngagements.item1')}</span>
-            </div>
-
-            <div className="checklist-item">
-              <span className="check-icon" aria-hidden="true">
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <circle cx="10" cy="10" r="10" fill="currentColor"/>
-                  <path d="M6 10l3 3 5-6" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-              </span>
-              <span className="checklist-text">{t('nosEngagements.item2')}</span>
-            </div>
-
-            <div className="checklist-item">
-              <span className="check-icon" aria-hidden="true">
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <circle cx="10" cy="10" r="10" fill="currentColor"/>
-                  <path d="M6 10l3 3 5-6" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-              </span>
-              <span className="checklist-text">{t('nosEngagements.item3')}</span>
-            </div>
-
-            <div className="checklist-item">
-              <span className="check-icon" aria-hidden="true">
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <circle cx="10" cy="10" r="10" fill="currentColor"/>
-                  <path d="M6 10l3 3 5-6" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-              </span>
-              <span className="checklist-text">{t('nosEngagements.item4')}</span>
-            </div>
+            {items.map((text, i) => (
+              <div className="checklist-item" key={i}>
+                <span className="check-icon" aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="10" cy="10" r="10" fill="currentColor" />
+                    <path d="M6 10l3 3 5-6" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </span>
+                <span className="checklist-text">{text}</span>
+              </div>
+            ))}
           </div>
         </div>
 
         <div className="nos-engagements-image-wrapper">
-          <Image 
-            src="https://bcconciergerie.com/assets/nos enga.jpg" 
-            alt="Conciergerie haut de gamme Nice Monaco - Services premium gestion locative" 
-            className="nos-engagements-image" 
+          <Image
+            src="https://bcconciergerie.com/assets/nos enga.jpg"
+            alt="Conciergerie haut de gamme Nice Monaco - Services premium gestion locative"
+            className="nos-engagements-image"
             width={600}
             height={700}
-            loading="lazy" 
+            loading="lazy"
           />
         </div>
-      </div>
+      </AnimateInView>
     </section>
   );
-};
-
-export default NosEngagements;
+}

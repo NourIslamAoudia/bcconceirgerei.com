@@ -3,17 +3,15 @@
 import React, { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
 import './NosLogements.css';
-import { useLanguage } from '@/context/LanguageContext';
 
 /**
- * Nos Logements Section
- * Showcases 6 luxury property categories with dual photo display
- * Client Component - uses state and IntersectionObserver
+ * Nos Logements Section — HYBRID (Client for hover/scroll interactions, SSR text via props)
+ * Showcases 3 luxury property categories with photo cycling on hover.
+ * Text is passed as a translations prop from the server page for SSR/SEO.
  */
-const NosLogements = () => {
+const NosLogements = ({ translations: t }) => {
   const [inView, setInView] = useState(false);
   const sectionRef = useRef(null);
-  const { t } = useLanguage();
 
   useEffect(() => {
     const currentRef = sectionRef.current;
@@ -78,10 +76,10 @@ const NosLogements = () => {
       <div className="nos-logements-container">
         {/* Section Header */}
         <div className="nos-logements-header">
-          <span className="section-badge">{t('nosLogements.badge')}</span>
-          <h2 className="section-title">{t('nosLogements.title')}</h2>
+          <span className="section-badge">{t.badge}</span>
+          <h2 className="section-title">{t.title}</h2>
           <p className="section-intro">
-            {t('nosLogements.intro')}
+            {t.intro}
           </p>
         </div>
 
@@ -117,7 +115,7 @@ const PropertyCard = ({ property, index }) => {
   const handleMouseEnter = () => {
     let currentIndex = 0;
     setActivePhoto(1);
-    
+
     intervalRef.current = setInterval(() => {
       currentIndex = (currentIndex + 1) % photos.length;
       setActivePhoto(currentIndex + 1);
@@ -148,18 +146,18 @@ const PropertyCard = ({ property, index }) => {
     const cardWidth = container.offsetWidth;
     const photoIndex = Math.round(scrollLeft / cardWidth) + 1;
     setActivePhoto(photoIndex);
-    
+
     // Check if at last photo and auto-scroll to next card
     const scrollWidth = container.scrollWidth;
     const maxScroll = scrollWidth - cardWidth;
-    
+
     // If we're at the last photo (within 10px tolerance)
     if (scrollLeft >= maxScroll - 10) {
       setTimeout(() => {
         const nextCard = cardRef.current?.nextElementSibling;
         if (nextCard) {
-          nextCard.scrollIntoView({ 
-            behavior: 'smooth', 
+          nextCard.scrollIntoView({
+            behavior: 'smooth',
             inline: 'start',
             block: 'nearest'
           });
@@ -169,7 +167,7 @@ const PropertyCard = ({ property, index }) => {
   };
 
   return (
-    <div 
+    <div
       ref={cardRef}
       className="property-card"
       style={{ animationDelay: `${index * 0.1}s` }}
@@ -180,9 +178,9 @@ const PropertyCard = ({ property, index }) => {
       <div className="property-photos" ref={scrollContainerRef} onScroll={handleScroll}>
         <div className="photo-wrapper">
           {photos.map((photo, photoIndex) => (
-            <Image 
+            <Image
               key={photoIndex}
-              src={photo} 
+              src={photo}
               alt={`${property.title} location luxe Côte d'Azur - Photo ${photoIndex + 1}`}
               className={`property-photo ${activePhoto === photoIndex + 1 ? 'active' : ''}`}
               width={400}
@@ -195,7 +193,7 @@ const PropertyCard = ({ property, index }) => {
         {/* Photo Indicators */}
         <div className="photo-indicators">
           {photos.map((_, photoIndex) => (
-            <span 
+            <span
               key={photoIndex}
               className={`indicator ${activePhoto === photoIndex + 1 ? 'active' : ''}`}
             ></span>

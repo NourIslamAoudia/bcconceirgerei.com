@@ -4,49 +4,47 @@ import React, { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import './ServicesSection.css';
 import ContactFormModal from './ContactFormModal';
-import { useLanguage } from '@/context/LanguageContext';
 
 /**
- * Services Section Component
- * Displays 4 service cards in a blog post style layout
- * Client Component - uses state and IntersectionObserver
+ * Services Section Component — HYBRID (Client for modal/observer, SSR text via props)
+ * Displays 4 service cards in a blog post style layout.
+ * Text is passed as a translations prop from the server page for SSR/SEO.
  */
-const ServicesSection = () => {
+const ServicesSection = ({ translations: t }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const { t } = useLanguage();
-  
+
   const services = [
     {
       id: 1,
-      title: t('services.service1.title'),
+      title: t.service1.title,
       image: 'https://bcconciergerie.com/assets/service1.jpg',
-      category: t('services.service1.category'),
-      date: t('services.service1.date'),
-      features: t('services.service1.features')
+      category: t.service1.category,
+      date: t.service1.date,
+      features: t.service1.features
     },
     {
       id: 2,
-      title: t('services.service2.title'),
+      title: t.service2.title,
       image: 'https://bcconciergerie.com/assets/service2.jpg',
-      category: t('services.service2.category'),
-      date: t('services.service2.date'),
-      features: t('services.service2.features')
+      category: t.service2.category,
+      date: t.service2.date,
+      features: t.service2.features
     },
     {
       id: 3,
-      title: t('services.service3.title'),
+      title: t.service3.title,
       image: 'https://www.leguidedescommerciaux.com/wp-content/uploads/2025/04/Comment-bien-accueillir-un-client-pour-maximiser-limpact-.jpg',
-      category: t('services.service3.category'),
-      date: t('services.service3.date'),
-      features: t('services.service3.features')
+      category: t.service3.category,
+      date: t.service3.date,
+      features: t.service3.features
     },
     {
       id: 4,
-      title: t('services.service4.title'),
+      title: t.service4.title,
       image: 'https://studio.gaynako.com/wp-content/uploads/2023/04/photographe-professionnel.jpeg',
-      category: t('services.service4.category'),
-      date: t('services.service4.date'),
-      features: t('services.service4.features')
+      category: t.service4.category,
+      date: t.service4.date,
+      features: t.service4.features
     }
   ];
 
@@ -77,10 +75,10 @@ const ServicesSection = () => {
         {/* Header */}
         <div className="services-header">
           <h2 className="services-main-title">
-            {t('services.mainTitle')}
+            {t.mainTitle}
           </h2>
           <p className="services-intro">
-            {t('services.intro')}
+            {t.intro}
           </p>
         </div>
 
@@ -89,8 +87,8 @@ const ServicesSection = () => {
           {services.map((service) => (
             <div key={service.id} className="service-card">
               <div className="service-card-image-wrapper">
-                <Image 
-                  src={service.image} 
+                <Image
+                  src={service.image}
                   alt={`${service.title} - Conciergerie Côte d'Azur Nice Monaco`}
                   className="service-card-image"
                   width={400}
@@ -107,19 +105,19 @@ const ServicesSection = () => {
                 <ul className="service-features">
                   {service.features.map((feature, index) => (
                     <li key={index} className="service-feature-item">
-                      <svg 
-                        width="16" 
-                        height="16" 
-                        viewBox="0 0 16 16" 
-                        fill="none" 
+                      <svg
+                        width="16"
+                        height="16"
+                        viewBox="0 0 16 16"
+                        fill="none"
                         xmlns="http://www.w3.org/2000/svg"
                         className="feature-icon"
                       >
-                        <path 
-                          d="M13.3334 4L6.00002 11.3333L2.66669 8" 
-                          stroke="currentColor" 
-                          strokeWidth="2" 
-                          strokeLinecap="round" 
+                        <path
+                          d="M13.3334 4L6.00002 11.3333L2.66669 8"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          strokeLinecap="round"
                           strokeLinejoin="round"
                         />
                       </svg>
@@ -134,11 +132,11 @@ const ServicesSection = () => {
 
         {/* CTA Button */}
         <div className="services-actions">
-          <button 
+          <button
             className="estimation-button"
             onClick={() => setIsModalOpen(true)}
           >
-            {t('services.cta')}
+            {t.cta}
           </button>
         </div>
       </div>
@@ -146,7 +144,7 @@ const ServicesSection = () => {
       <ContactFormModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
-        title={t('hero.modalTitle')}
+        title={t.modalTitle}
       />
     </section>
   );

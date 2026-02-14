@@ -91,16 +91,32 @@ const nextConfig = {
   // Redirects for SEO canonicalization
   async redirects() {
     return [
-      // Redirect /apropos to /a-propos
+      // Redirect old non-locale paths
       {
-        source: "/apropos",
-        destination: "/a-propos",
+        source: '/apropos',
+        destination: '/fr/a-propos',
         permanent: true,
       },
       {
-        source: "/Apropos",
-        destination: "/a-propos",
+        source: '/Apropos',
+        destination: '/fr/a-propos',
         permanent: true,
+      },
+      // Redirect old non-locale service/offer paths
+      {
+        source: '/services',
+        destination: '/fr/services',
+        permanent: false,
+      },
+      {
+        source: '/offres',
+        destination: '/fr/offres',
+        permanent: false,
+      },
+      {
+        source: '/a-propos',
+        destination: '/fr/a-propos',
+        permanent: false,
       },
     ];
   },
