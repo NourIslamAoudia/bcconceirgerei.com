@@ -1,4 +1,5 @@
 import { getBlogsData, getAllBlogSlugs } from "@/lib/getBlogsData";
+import { getAlternateBlogSlug } from "@/lib/blogSlugMap";
 
 export default function sitemap() {
   const baseUrl = "https://www.bcconciergerie.com";
@@ -44,8 +45,8 @@ export default function sitemap() {
         priority: 0.7,
         alternates: {
           languages: {
-            fr: `${baseUrl}/fr/blog/${blog.slug}`,
-            en: `${baseUrl}/en/blog/${blog.slug}`,
+            fr: `${baseUrl}/fr/blog/${getAlternateBlogSlug(blog.slug, locale, "fr")}`,
+            en: `${baseUrl}/en/blog/${getAlternateBlogSlug(blog.slug, locale, "en")}`,
           },
         },
       });

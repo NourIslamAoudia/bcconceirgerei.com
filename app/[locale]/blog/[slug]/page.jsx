@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getBlogsData, getAllBlogSlugs } from "@/lib/getBlogsData";
+import { getAlternateBlogSlug } from "@/lib/blogSlugMap";
 import "../blog.css";
 
 export async function generateStaticParams() {
@@ -27,8 +28,8 @@ export async function generateMetadata({ params }) {
     alternates: {
       canonical: `https://www.bcconciergerie.com/${locale}/blog/${slug}`,
       languages: {
-        fr: `https://www.bcconciergerie.com/fr/blog/${slug}`,
-        en: `https://www.bcconciergerie.com/en/blog/${slug}`,
+        fr: `https://www.bcconciergerie.com/fr/blog/${getAlternateBlogSlug(slug, locale, "fr")}`,
+        en: `https://www.bcconciergerie.com/en/blog/${getAlternateBlogSlug(slug, locale, "en")}`,
       },
     },
     openGraph: {
