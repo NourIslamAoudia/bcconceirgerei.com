@@ -32,9 +32,49 @@ export async function generateMetadata({ params }) {
 export default async function HomePage({ params }) {
   const { locale } = await params;
   const t = getTranslations(locale);
+  const isEn = locale === "en";
+
+  const websiteJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "B&C Conciergerie",
+    url: "https://www.bcconciergerie.com",
+    inLanguage: isEn ? "en" : "fr",
+    publisher: {
+      "@type": "Organization",
+      name: "B&C Conciergerie Côte d'Azur",
+      url: "https://www.bcconciergerie.com",
+      logo: "https://www.bcconciergerie.com/icon_new.png",
+    },
+  };
+
+  const webPageJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: isEn
+      ? "B&C Conciergerie Côte d'Azur | Airbnb Management Nice Monaco"
+      : "B&C Conciergerie Côte d'Azur | Gestion Airbnb Nice Monaco",
+    description: isEn
+      ? "Premium concierge services on the French Riviera. Airbnb management, professional cleaning, optimized revenue."
+      : "Conciergerie haut de gamme sur la Côte d'Azur. Gestion locative Airbnb, ménage professionnel, revenus optimisés.",
+    url: `https://www.bcconciergerie.com/${locale}`,
+    inLanguage: isEn ? "en" : "fr",
+    isPartOf: {
+      "@type": "WebSite",
+      url: "https://www.bcconciergerie.com",
+    },
+  };
 
   return (
     <div className="home-page">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageJsonLd) }}
+      />
       <HeroSection
         title={t("hero.title")}
         subtitle={t("hero.subtitle")}

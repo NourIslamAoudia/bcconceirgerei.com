@@ -35,6 +35,11 @@ export const metadata = {
     "services premium",
     "entretien professionnel",
     "optimisation tarifaire",
+    "blog conciergerie nice",
+    "conseils airbnb nice",
+    "réglementation airbnb nice",
+    "rentabilité location courte durée",
+    "avis 5 étoiles airbnb",
   ],
   authors: [{ name: "B&C Conciergerie" }],
   creator: "B&C Conciergerie",
@@ -248,9 +253,7 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body className={inter.variable}>
-        <LanguageProvider>
-          {children}
-        </LanguageProvider>
+        <LanguageProvider>{children}</LanguageProvider>
         {/* Analytics loaded after interactive - non-blocking */}
         <Analytics />
       </body>

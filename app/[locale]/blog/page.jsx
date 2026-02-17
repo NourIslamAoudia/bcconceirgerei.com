@@ -8,11 +8,56 @@ export async function generateMetadata({ params }) {
   const isEn = locale === "en";
   return {
     title: isEn
-      ? "Blog | B&C Conciergerie Côte d'Azur"
-      : "Blog | B&C Conciergerie Côte d'Azur",
+      ? "Blog - Airbnb Management Tips | B&C Conciergerie Côte d'Azur"
+      : "Blog - Conseils Gestion Airbnb | B&C Conciergerie Côte d'Azur",
     description: isEn
-      ? "Expert tips and guides for Airbnb owners in Nice. Regulations, profitability, management and optimization of your short-term rental."
-      : "Conseils et guides experts pour propriétaires Airbnb à Nice. Réglementation, rentabilité, gestion et optimisation de votre location saisonnière.",
+      ? "Expert tips and guides for Airbnb owners in Nice. Regulations, profitability, management and optimization of your short-term rental on the French Riviera."
+      : "Conseils et guides experts pour propriétaires Airbnb à Nice. Réglementation, rentabilité, gestion et optimisation de votre location saisonnière sur la Côte d'Azur.",
+    keywords: isEn
+      ? [
+          "airbnb nice blog",
+          "rental management tips",
+          "short-term rental guide",
+          "nice regulations airbnb",
+          "airbnb profitability",
+        ]
+      : [
+          "blog airbnb nice",
+          "conseils gestion locative",
+          "guide location saisonnière",
+          "réglementation airbnb nice",
+          "rentabilité airbnb",
+        ],
+    openGraph: {
+      type: "website",
+      locale: isEn ? "en_GB" : "fr_FR",
+      url: `https://www.bcconciergerie.com/${locale}/blog`,
+      title: isEn
+        ? "Blog - Airbnb Management Tips | B&C Conciergerie"
+        : "Blog - Conseils Gestion Airbnb | B&C Conciergerie",
+      description: isEn
+        ? "Expert tips and guides for Airbnb owners on the French Riviera."
+        : "Conseils et guides experts pour propriétaires Airbnb sur la Côte d'Azur.",
+      siteName: "B&C Conciergerie",
+      images: [
+        {
+          url: "https://www.bcconciergerie.com/icon_new.png",
+          width: 1200,
+          height: 630,
+          alt: "B&C Conciergerie Blog",
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: isEn
+        ? "Blog - Airbnb Tips | B&C Conciergerie"
+        : "Blog - Conseils Airbnb | B&C Conciergerie",
+      description: isEn
+        ? "Expert tips for Airbnb owners on the French Riviera."
+        : "Conseils experts pour propriétaires Airbnb sur la Côte d'Azur.",
+      images: ["https://www.bcconciergerie.com/icon_new.png"],
+    },
     alternates: {
       canonical: `https://www.bcconciergerie.com/${locale}/blog`,
       languages: {
@@ -30,8 +75,39 @@ export default async function BlogPage({ params }) {
   const blogs = blogsData.blogs;
   const isEn = locale === "en";
 
+  // JSON-LD CollectionPage structured data
+  const blogListJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: isEn ? "B&C Conciergerie Blog" : "Blog B&C Conciergerie",
+    description: isEn
+      ? "Expert tips and guides for Airbnb owners on the French Riviera"
+      : "Conseils et guides experts pour propriétaires Airbnb sur la Côte d'Azur",
+    url: `https://www.bcconciergerie.com/${locale}/blog`,
+    publisher: {
+      "@type": "Organization",
+      name: "B&C Conciergerie",
+      url: "https://www.bcconciergerie.com",
+      logo: "https://www.bcconciergerie.com/icon_new.png",
+    },
+    mainEntity: {
+      "@type": "ItemList",
+      itemListElement: blogs.map((blog, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        url: `https://www.bcconciergerie.com/${locale}/blog/${blog.slug}`,
+        name: blog.title,
+      })),
+    },
+  };
+
   return (
     <div className="blog-page">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(blogListJsonLd) }}
+      />
+
       {/* Hero */}
       <section className="blog-hero">
         <div className="blog-hero-content">

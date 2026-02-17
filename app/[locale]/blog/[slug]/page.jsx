@@ -39,8 +39,23 @@ export async function generateMetadata({ params }) {
       description: blog.excerpt,
       siteName: "B&C Conciergerie",
       publishedTime: blog.date,
+      modifiedTime: blog.date,
       authors: [blog.author],
       tags: blog.tags,
+      images: [
+        {
+          url: "https://www.bcconciergerie.com/icon_new.png",
+          width: 1200,
+          height: 630,
+          alt: blog.title,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: blog.title,
+      description: blog.excerpt,
+      images: ["https://www.bcconciergerie.com/icon_new.png"],
     },
   };
 }
@@ -57,23 +72,80 @@ export default async function BlogDetailPage({ params }) {
 
   const { content } = blog;
 
-  // JSON-LD structured data for SEO
+  // JSON-LD BlogPosting structured data for SEO
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `https://www.bcconciergerie.com/${locale}/blog/${slug}`,
+    },
     headline: blog.title,
     description: blog.excerpt,
+    image: "https://www.bcconciergerie.com/icon_new.png",
     author: {
       "@type": "Organization",
       name: blog.author,
+      url: "https://www.bcconciergerie.com",
     },
     datePublished: blog.date,
+    dateModified: blog.date,
+    keywords: blog.tags.join(", "),
+    inLanguage: locale === "en" ? "en" : "fr",
     publisher: {
       "@type": "Organization",
       name: "B&C Conciergerie",
       url: "https://www.bcconciergerie.com",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://www.bcconciergerie.com/icon_new.png",
+      },
     },
+    articleSection: blog.category,
   };
+
+  // JSON-LD BreadcrumbList
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: isEn ? "Home" : "Accueil",
+        item: `https://www.bcconciergerie.com/${locale}`,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Blog",
+        item: `https://www.bcconciergerie.com/${locale}/blog`,
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: blog.title,
+        item: `https://www.bcconciergerie.com/${locale}/blog/${slug}`,
+      },
+    ],
+  };
+
+  // JSON-LD FAQPage (if FAQ exists)
+  const faqJsonLd =
+    content.faq && content.faq.length > 0
+      ? {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: content.faq.map((item) => ({
+            "@type": "Question",
+            name: item.question,
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: item.answer,
+            },
+          })),
+        }
+      : null;
 
   return (
     <div className="blog-detail-page">
@@ -81,6 +153,16 @@ export default async function BlogDetailPage({ params }) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+      {faqJsonLd && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+        />
+      )}
 
       {/* Hero */}
       <section className="blog-detail-hero">
