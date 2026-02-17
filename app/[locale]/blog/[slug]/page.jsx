@@ -1,16 +1,18 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import blogsData from "@/blogs_data.json";
+import { getBlogsData, getAllBlogSlugs } from "@/lib/getBlogsData";
 import "../blog.css";
 
 export async function generateStaticParams() {
-  return blogsData.blogs.map((blog) => ({
-    slug: blog.slug,
+  const slugs = getAllBlogSlugs();
+  return slugs.map((slug) => ({
+    slug,
   }));
 }
 
 export async function generateMetadata({ params }) {
   const { locale, slug } = await params;
+  const blogsData = getBlogsData(locale);
   const blog = blogsData.blogs.find((b) => b.slug === slug);
 
   if (!blog) {
@@ -45,6 +47,7 @@ export async function generateMetadata({ params }) {
 
 export default async function BlogDetailPage({ params }) {
   const { locale, slug } = await params;
+  const blogsData = getBlogsData(locale);
   const blog = blogsData.blogs.find((b) => b.slug === slug);
   const isEn = locale === "en";
 

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import blogsData from "@/blogs_data.json";
+import { getBlogsData } from "@/lib/getBlogsData";
 import { getTranslations } from "@/lib/getTranslations";
 import "./blog.css";
 
@@ -26,6 +26,7 @@ export async function generateMetadata({ params }) {
 export default async function BlogPage({ params }) {
   const { locale } = await params;
   const t = getTranslations(locale);
+  const blogsData = getBlogsData(locale);
   const blogs = blogsData.blogs;
   const isEn = locale === "en";
 

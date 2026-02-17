@@ -1,5 +1,5 @@
 import Link from "next/link";
-import blogsData from "@/blogs_data.json";
+import { getBlogsData } from "@/lib/getBlogsData";
 import "./BlogSection.css";
 
 /**
@@ -8,6 +8,7 @@ import "./BlogSection.css";
  * All text is passed as props from the server page for SSR/SEO.
  */
 export default function BlogSection({ locale, translations: t }) {
+  const blogsData = getBlogsData(locale);
   const blogs = blogsData.blogs.slice(0, 3);
   const isEn = locale === "en";
 
