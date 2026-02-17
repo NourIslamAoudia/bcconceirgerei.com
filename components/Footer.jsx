@@ -1,6 +1,6 @@
-import Link from 'next/link';
-import Image from 'next/image';
-import './Footer.css';
+import Link from "next/link";
+import Image from "next/image";
+import "./Footer.css";
 
 /**
  * Footer Component — SERVER COMPONENT
@@ -13,11 +13,11 @@ export default function Footer({ locale, translations: t }) {
         {/* Logo Section */}
         <div className="footer-logo-section">
           <div className="footer-logo">
-            <h2 className="logo-text"><span className="brand">B&C</span> Conciergerie</h2>
+            <h2 className="logo-text">
+              <span className="brand">B&C</span> Conciergerie
+            </h2>
           </div>
-          <p className="footer-tagline">
-            {t.tagline}
-          </p>
+          <p className="footer-tagline">{t.tagline}</p>
         </div>
 
         {/* Footer Columns */}
@@ -26,11 +26,29 @@ export default function Footer({ locale, translations: t }) {
           <div className="footer-column">
             <h3 className="footer-heading">{t.siteMap}</h3>
             <nav className="footer-nav">
-              <Link href={`/${locale}`} className="footer-link">{t.home}</Link>
-              <Link href={`/${locale}/services`} className="footer-link">{t.services}</Link>
-              <Link href={`/${locale}/offres`} className="footer-link">{t.offers}</Link>
-              <Link href={`/${locale}/a-propos`} className="footer-link">{t.about}</Link>
-              <a href="https://wa.me/+33774061322" target="_blank" rel="noopener noreferrer" className="footer-link">{t.contact}</a>
+              <Link href={`/${locale}`} className="footer-link">
+                {t.home}
+              </Link>
+              <Link href={`/${locale}/services`} className="footer-link">
+                {t.services}
+              </Link>
+              <Link href={`/${locale}/offres`} className="footer-link">
+                {t.offers}
+              </Link>
+              <Link href={`/${locale}/a-propos`} className="footer-link">
+                {t.about}
+              </Link>
+              <Link href={`/${locale}/blog`} className="footer-link">
+                {t.blog || "Blog"}
+              </Link>
+              <a
+                href="https://wa.me/+33774061322"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="footer-link"
+              >
+                {t.contact}
+              </a>
             </nav>
           </div>
 
@@ -38,12 +56,24 @@ export default function Footer({ locale, translations: t }) {
           <div className="footer-column">
             <h3 className="footer-heading">{t.destinations}</h3>
             <nav className="footer-nav">
-              <Link href={`/${locale}#destinations`} className="footer-link">Nice</Link>
-              <Link href={`/${locale}#destinations`} className="footer-link">Monaco</Link>
-              <Link href={`/${locale}#destinations`} className="footer-link">Villefranche-sur-Mer</Link>
-              <Link href={`/${locale}#destinations`} className="footer-link">Cannes</Link>
-              <Link href={`/${locale}#destinations`} className="footer-link">Antibes et Juan les Pins</Link>
-              <Link href={`/${locale}#destinations`} className="footer-link">Èze et Saint-Jean-Cap-Ferrat</Link>
+              <Link href={`/${locale}#destinations`} className="footer-link">
+                Nice
+              </Link>
+              <Link href={`/${locale}#destinations`} className="footer-link">
+                Monaco
+              </Link>
+              <Link href={`/${locale}#destinations`} className="footer-link">
+                Villefranche-sur-Mer
+              </Link>
+              <Link href={`/${locale}#destinations`} className="footer-link">
+                Cannes
+              </Link>
+              <Link href={`/${locale}#destinations`} className="footer-link">
+                Antibes et Juan les Pins
+              </Link>
+              <Link href={`/${locale}#destinations`} className="footer-link">
+                Èze et Saint-Jean-Cap-Ferrat
+              </Link>
             </nav>
           </div>
 
@@ -52,11 +82,24 @@ export default function Footer({ locale, translations: t }) {
             <h3 className="footer-heading">{t.findUs}</h3>
             <div className="footer-info">
               <p className="footer-text">
-                <svg className="footer-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
-                  <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" stroke="currentColor" strokeWidth="0.8" fill="none" />
+                <svg
+                  className="footer-icon"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  width="20"
+                  height="20"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"
+                    stroke="currentColor"
+                    strokeWidth="0.8"
+                    fill="none"
+                  />
                   <circle cx="12" cy="9" r="2.2" fill="currentColor" />
                 </svg>
-                {t.address}<br />
+                {t.address}
+                <br />
                 06100
               </p>
             </div>
@@ -66,15 +109,38 @@ export default function Footer({ locale, translations: t }) {
           <div className="footer-column">
             <h3 className="footer-heading">{t.contactUs}</h3>
             <div className="footer-info">
-              <a href="mailto:contact@bcconciergerie.com" className="footer-link footer-email">
-                <svg className="footer-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
-                  <path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" fill="currentColor" />
+              <a
+                href="mailto:contact@bcconciergerie.com"
+                className="footer-link footer-email"
+              >
+                <svg
+                  className="footer-icon"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  width="18"
+                  height="18"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"
+                    fill="currentColor"
+                  />
                 </svg>
                 contact@bcconciergerie.com
               </a>
               <a href="tel:+33774061322" className="footer-link footer-phone">
-                <svg className="footer-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
-                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.08 4.18 2 2 0 0 1 4 2h3a2 2 0 0 1 2 1.72c.12 1.05.37 2.07.74 3.03a2 2 0 0 1-.45 2.11L8.91 11.09a16 16 0 0 0 6 6l1.23-1.23a2 2 0 0 1 2.11-.45c.96.37 1.98.62 3.03.74A2 2 0 0 1 22 16.92z" fill="currentColor" />
+                <svg
+                  className="footer-icon"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  width="18"
+                  height="18"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.08 4.18 2 2 0 0 1 4 2h3a2 2 0 0 1 2 1.72c.12 1.05.37 2.07.74 3.03a2 2 0 0 1-.45 2.11L8.91 11.09a16 16 0 0 0 6 6l1.23-1.23a2 2 0 0 1 2.11-.45c.96.37 1.98.62 3.03.74A2 2 0 0 1 22 16.92z"
+                    fill="currentColor"
+                  />
                 </svg>
                 +33 7 74 06 13 22
               </a>

@@ -1,11 +1,11 @@
-'use client';
+"use client";
 
-import React, { useState, useEffect } from 'react';
-import './Navbar.css';
-import { FaBars, FaWhatsapp } from 'react-icons/fa';
-import Image from 'next/image';
-import Link from 'next/link';
-import LanguageSwitcher from './LanguageSwitcher';
+import React, { useState, useEffect } from "react";
+import "./Navbar.css";
+import { FaBars, FaWhatsapp } from "react-icons/fa";
+import Image from "next/image";
+import Link from "next/link";
+import LanguageSwitcher from "./LanguageSwitcher";
 
 /**
  * Navbar Component — HYBRID (Client for scroll/menu state, SSR text via props)
@@ -20,16 +20,21 @@ const Navbar = ({ locale, translations: t }) => {
 
   // side effect: add a 'blurred' class to the main content when the drawer is open
   useEffect(() => {
-    const main = document.querySelector('.site-main');
+    const main = document.querySelector(".site-main");
     if (!main) return;
-    if (menuOpen) main.classList.add('blurred');
-    else main.classList.remove('blurred');
-    return () => main.classList.remove('blurred');
+    if (menuOpen) main.classList.add("blurred");
+    else main.classList.remove("blurred");
+    return () => main.classList.remove("blurred");
   }, [menuOpen]);
 
   useEffect(() => {
-    const homeEl = document.querySelector('.home-page');
-    const candidates = [window, document.documentElement, document.body, homeEl].filter(Boolean);
+    const homeEl = document.querySelector(".home-page");
+    const candidates = [
+      window,
+      document.documentElement,
+      document.body,
+      homeEl,
+    ].filter(Boolean);
 
     let rafId = 0;
 
@@ -60,12 +65,20 @@ const Navbar = ({ locale, translations: t }) => {
   }, []);
 
   return (
-    <nav className={`navbar ${scrolled ? 'scrolled' : 'transparent'} ${menuOpen ? 'menu-open' : ''}`}>
+    <nav
+      className={`navbar ${scrolled ? "scrolled" : "transparent"} ${menuOpen ? "menu-open" : ""}`}
+    >
       <div className="navbar-container">
         <div className="navbar-inner">
           {/* Left section - Menu icon and Logo */}
           <div className="navbar-left">
-            <button className="menu-icon" aria-label="Menu" onClick={toggleMenu} aria-expanded={menuOpen} aria-controls="site-drawer">
+            <button
+              className="menu-icon"
+              aria-label="Menu"
+              onClick={toggleMenu}
+              aria-expanded={menuOpen}
+              aria-controls="site-drawer"
+            >
               <FaBars />
             </button>
             <Link href={`/${locale}`} className="logo">
@@ -98,21 +111,64 @@ const Navbar = ({ locale, translations: t }) => {
         </div>
       </div>
       {/* Drawer + Backdrop */}
-      <div className={`nav-backdrop ${menuOpen ? 'open' : ''}`} onClick={closeMenu} aria-hidden={!menuOpen}></div>
+      <div
+        className={`nav-backdrop ${menuOpen ? "open" : ""}`}
+        onClick={closeMenu}
+        aria-hidden={!menuOpen}
+      ></div>
 
-      <aside id="site-drawer" className={`nav-drawer ${menuOpen ? 'open' : ''}`} aria-hidden={!menuOpen}>
-        <button className="drawer-close" aria-label="Close menu" onClick={closeMenu}>&times;</button>
+      <aside
+        id="site-drawer"
+        className={`nav-drawer ${menuOpen ? "open" : ""}`}
+        aria-hidden={!menuOpen}
+      >
+        <button
+          className="drawer-close"
+          aria-label="Close menu"
+          onClick={closeMenu}
+        >
+          &times;
+        </button>
         <div className="drawer-links">
-          <Link href={`/${locale}`} onClick={closeMenu}>{t.home}</Link>
-          <Link href={`/${locale}/services`} onClick={closeMenu}>{t.services}</Link>
-          <Link href={`/${locale}/offres`} onClick={closeMenu}>{t.offers}</Link>
-          <Link href={`/${locale}/a-propos`} onClick={closeMenu}>{t.about}</Link>
-          <a href="https://wa.me/+33774061322" target="_blank" rel="noopener noreferrer" onClick={closeMenu}>{t.contact}</a>
+          <Link href={`/${locale}`} onClick={closeMenu}>
+            {t.home}
+          </Link>
+          <Link href={`/${locale}/services`} onClick={closeMenu}>
+            {t.services}
+          </Link>
+          <Link href={`/${locale}/offres`} onClick={closeMenu}>
+            {t.offers}
+          </Link>
+          <Link href={`/${locale}/a-propos`} onClick={closeMenu}>
+            {t.about}
+          </Link>
+          <Link href={`/${locale}/blog`} onClick={closeMenu}>
+            {t.blog}
+          </Link>
+          <a
+            href="https://wa.me/+33774061322"
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={closeMenu}
+          >
+            {t.contact}
+          </a>
         </div>
 
         <div className="drawer-footer">
-          <p className="drawer-contact">{t.footerText}<br /><strong>+33 77 40 61 3 22</strong></p>
-          <a className="drawer-contact-link" href="https://wa.me/+33774061322" target="_blank" rel="noopener noreferrer">{t.contactUs}</a>
+          <p className="drawer-contact">
+            {t.footerText}
+            <br />
+            <strong>+33 77 40 61 3 22</strong>
+          </p>
+          <a
+            className="drawer-contact-link"
+            href="https://wa.me/+33774061322"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {t.contactUs}
+          </a>
         </div>
       </aside>
     </nav>
