@@ -1,89 +1,65 @@
-'use client';
-
-import React, { useEffect, useRef, useState } from 'react';
-import Image from 'next/image';
-import './ServicesSection.css';
-import ContactFormModal from './ContactFormModal';
+import React from "react";
+import Image from "next/image";
+import "./ServicesSection.css";
+import ContactButton from "./ContactButton";
+import AnimateInView from "./AnimateInView";
 
 /**
- * Services Section Component — HYBRID (Client for modal/observer, SSR text via props)
+ * Services Section Component — SERVER COMPONENT
  * Displays 4 service cards in a blog post style layout.
  * Text is passed as a translations prop from the server page for SSR/SEO.
+ * Scroll-triggered animations are handled by the AnimateInView client wrapper.
+ * The interactive CTA button + modal is delegated to the ContactButton client component.
  */
 const ServicesSection = ({ translations: t }) => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
   const services = [
     {
       id: 1,
       title: t.service1.title,
-      image: 'https://bcconciergerie.com/assets/service1.jpg',
+      image: "https://bcconciergerie.com/assets/service1.jpg",
       category: t.service1.category,
       date: t.service1.date,
-      features: t.service1.features
+      features: t.service1.features,
     },
     {
       id: 2,
       title: t.service2.title,
-      image: 'https://bcconciergerie.com/assets/service2.jpg',
+      image: "https://bcconciergerie.com/assets/service2.jpg",
       category: t.service2.category,
       date: t.service2.date,
-      features: t.service2.features
+      features: t.service2.features,
     },
     {
       id: 3,
       title: t.service3.title,
-      image: 'https://www.leguidedescommerciaux.com/wp-content/uploads/2025/04/Comment-bien-accueillir-un-client-pour-maximiser-limpact-.jpg',
+      image:
+        "https://www.leguidedescommerciaux.com/wp-content/uploads/2025/04/Comment-bien-accueillir-un-client-pour-maximiser-limpact-.jpg",
       category: t.service3.category,
       date: t.service3.date,
-      features: t.service3.features
+      features: t.service3.features,
     },
     {
       id: 4,
       title: t.service4.title,
-      image: 'https://studio.gaynako.com/wp-content/uploads/2023/04/photographe-professionnel.jpeg',
+      image:
+        "https://studio.gaynako.com/wp-content/uploads/2023/04/photographe-professionnel.jpeg",
       category: t.service4.category,
       date: t.service4.date,
-      features: t.service4.features
-    }
+      features: t.service4.features,
+    },
   ];
-
-  const gridRef = useRef(null);
-  const [inView, setInView] = useState(false);
-
-  useEffect(() => {
-    if (!gridRef.current) return;
-    const el = gridRef.current;
-    const obs = new IntersectionObserver(
-      (entries, observer) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setInView(true);
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.12 }
-    );
-    obs.observe(el);
-    return () => obs.disconnect();
-  }, []);
 
   return (
     <section className="services-section">
       <div className="services-container">
         {/* Header */}
         <div className="services-header">
-          <h2 className="services-main-title">
-            {t.mainTitle}
-          </h2>
-          <p className="services-intro">
-            {t.intro}
-          </p>
+          <h2 className="services-main-title">{t.mainTitle}</h2>
+          <p className="services-intro">{t.intro}</p>
         </div>
 
         {/* Service Cards Grid */}
-        <div ref={gridRef} className={`services-grid ${inView ? 'in-view' : ''}`}>
+        <AnimateInView className="services-grid" threshold={0.12}>
           {services.map((service) => (
             <div key={service.id} className="service-card">
               <div className="service-card-image-wrapper">
@@ -128,24 +104,13 @@ const ServicesSection = ({ translations: t }) => {
               </div>
             </div>
           ))}
-        </div>
+        </AnimateInView>
 
         {/* CTA Button */}
         <div className="services-actions">
-          <button
-            className="estimation-button"
-            onClick={() => setIsModalOpen(true)}
-          >
-            {t.cta}
-          </button>
+          <ContactButton label={t.cta} modalTitle={t.modalTitle} />
         </div>
       </div>
-
-      <ContactFormModal
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-        title={t.modalTitle}
-      />
     </section>
   );
 };

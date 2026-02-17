@@ -1,18 +1,18 @@
-import { NextResponse } from 'next/server';
+import { NextResponse } from "next/server";
 
-const locales = ['fr', 'en'];
-const defaultLocale = 'fr';
+const locales = ["fr", "en"];
+const defaultLocale = "fr";
 
-export function middleware(request) {
+export function proxy(request) {
   const url = request.nextUrl.clone();
-  const hostname = request.headers.get('host') || '';
+  const hostname = request.headers.get("host") || "";
   const { pathname } = url;
 
   // Force HTTPS and www canonicalization
   if (
-    !hostname.startsWith('www.') &&
-    !hostname.includes('localhost') &&
-    !hostname.includes('127.0.0.1')
+    !hostname.startsWith("www.") &&
+    !hostname.includes("localhost") &&
+    !hostname.includes("127.0.0.1")
   ) {
     url.host = `www.${hostname}`;
     return NextResponse.redirect(url, 301);
@@ -20,7 +20,7 @@ export function middleware(request) {
 
   // Check if pathname already has a valid locale prefix
   const pathnameHasLocale = locales.some(
-    (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
+    (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`,
   );
 
   if (pathnameHasLocale) {
@@ -42,6 +42,6 @@ export const config = {
      * - favicon.ico (favicon file)
      * - public folder files (images, icons, manifests, etc.)
      */
-    '/((?!api|_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt|manifest.json|.*\\.png$|.*\\.jpg$|.*\\.jpeg$|.*\\.svg$|.*\\.gif$|.*\\.webp$|.*\\.ico$).*)',
+    "/((?!api|_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt|manifest.json|.*\\.png$|.*\\.jpg$|.*\\.jpeg$|.*\\.svg$|.*\\.gif$|.*\\.webp$|.*\\.ico$).*)",
   ],
 };

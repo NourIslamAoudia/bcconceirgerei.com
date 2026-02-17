@@ -1,7 +1,7 @@
 /* Iconic Collection Carousel - Luxury Destinations */
 .iconic-collection-section {
   width: 100%;
-  background-color: #FAF9F6; /* Blanc cassé - Pureté, équilibre */
+  background-color: #faf9f6; /* Blanc cassé - Pureté, équilibre */
   padding: 80px 40px;
   position: relative;
 }
@@ -18,7 +18,7 @@
   display: inline-block;
   padding: 8px 24px;
   background: #708238; /* Vert olive - Nature, prestige, confiance */
-  color: #FAF9F6;
+  color: #faf9f6;
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 1.5px;
@@ -37,22 +37,56 @@
 }
 
 .title-highlight {
-  color: #C7A76C; /* Doré léger - Raffinement, touche luxe */
+  color: #c7a76c; /* Doré léger - Raffinement, touche luxe */
+}
+
+/* CSS-driven scroll entrance animations (AnimateInView adds .is-visible) */
+
+@keyframes cardSlideIn {
+  from {
+    opacity: 0;
+    transform: translateX(60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 .iconic-collection-container {
   max-width: 1400px;
   margin: 0 auto;
-  /* Start visible to avoid content flash before JS mounts. Child cards are still animated via Framer Motion variants. */
   opacity: 1;
   transform: none;
 }
 
-/* Keep the is-visible class for compatibility but don't toggle visibility via CSS to avoid flicker.
-   Visual entrance is handled by Framer Motion variants on child elements. */
-.iconic-collection-container.is-visible {
-  opacity: 1;
-  transform: none;
+/* Destination cards start hidden and animate in when container is visible */
+.iconic-collection-container .destination-card {
+  opacity: 0;
+  transform: translateX(60px);
+}
+
+.iconic-collection-container.is-visible .destination-card {
+  animation: cardSlideIn 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+.iconic-collection-container.is-visible .destination-card:nth-child(1) {
+  animation-delay: 0s;
+}
+.iconic-collection-container.is-visible .destination-card:nth-child(2) {
+  animation-delay: 0.18s;
+}
+.iconic-collection-container.is-visible .destination-card:nth-child(3) {
+  animation-delay: 0.36s;
+}
+.iconic-collection-container.is-visible .destination-card:nth-child(4) {
+  animation-delay: 0.54s;
+}
+.iconic-collection-container.is-visible .destination-card:nth-child(5) {
+  animation-delay: 0.72s;
+}
+.iconic-collection-container.is-visible .destination-card:nth-child(6) {
+  animation-delay: 0.9s;
 }
 
 .destination-cards-stack {
@@ -65,7 +99,7 @@
 .destination-card {
   width: 100%;
   height: 450px;
-  background: #FFFFFF;
+  background: #ffffff;
   border-radius: 16px;
   box-shadow: 0 4px 20px rgba(112, 130, 56, 0.08);
   display: flex;
@@ -73,7 +107,7 @@
   overflow: hidden;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
-  border: 1px solid #F5EEDF;
+  border: 1px solid #f5eedf;
 }
 
 .featured-card-large {
@@ -90,13 +124,13 @@
   box-shadow: 0 4px 20px rgba(112, 130, 56, 0.08);
   position: relative;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  border: 1px solid #F5EEDF;
+  border: 1px solid #f5eedf;
 }
 
 .featured-card-large:hover .featured-card-image-wrapper {
   transform: translateY(-8px);
   box-shadow: 0 12px 32px rgba(112, 130, 56, 0.15);
-  border-color: #C7A76C;
+  border-color: #c7a76c;
 }
 
 /* Performance hints for motion animations - use transform/opacity only to avoid layout shift */
@@ -106,6 +140,15 @@
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
   transform: translateZ(0);
+}
+
+/* Respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .iconic-collection-container .destination-card {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+  }
 }
 
 .featured-card-image {
@@ -126,7 +169,7 @@
   flex-direction: column;
   justify-content: flex-start;
   color: #222;
-  border-top: 2px solid #C7A76C;
+  border-top: 2px solid #c7a76c;
 }
 
 /* Featured badge removed per user request */
@@ -148,7 +191,7 @@
 }
 
 .featured-location svg {
-  color: #C7A76C;
+  color: #c7a76c;
 }
 
 .featured-description {
@@ -216,7 +259,7 @@
 .destination-card {
   width: 100%;
   height: 450px;
-  background: #FFFFFF;
+  background: #ffffff;
   border-radius: 16px;
   box-shadow: 0 4px 20px rgba(112, 130, 56, 0.08);
   display: flex;
@@ -224,13 +267,13 @@
   overflow: hidden;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
-  border: 1px solid #F5EEDF;
+  border: 1px solid #f5eedf;
 }
 
 .destination-card:hover {
   transform: translateY(-8px);
   box-shadow: 0 12px 32px rgba(112, 130, 56, 0.15);
-  border-color: #C7A76C;
+  border-color: #c7a76c;
 }
 
 .card-thumbnail {
@@ -357,7 +400,7 @@
   .iconic-collection-container {
     max-width: 900px;
   }
-  
+
   .destination-cards-stack {
     grid-template-columns: repeat(2, 1fr);
     gap: 24px;
@@ -369,40 +412,40 @@
   .iconic-collection-section {
     padding: 60px 24px;
   }
-  
+
   .iconic-collection-header {
     margin-bottom: 40px;
   }
-  
+
   .iconic-collection-container {
     max-width: 600px;
   }
-  
+
   .destination-cards-stack {
     display: flex;
     flex-direction: column;
     gap: 20px;
   }
-  
+
   .destination-card {
     height: 180px;
     flex-direction: row;
   }
-  
+
   .card-thumbnail {
     width: 140px;
     height: 180px;
   }
-  
+
   .card-content {
     padding: 20px;
   }
-  
+
   .card-title {
     font-size: 18px;
     margin-bottom: 6px;
   }
-  
+
   .card-description {
     font-size: 12px;
     -webkit-line-clamp: 2;
@@ -414,29 +457,29 @@
   .iconic-collection-section {
     padding: 40px 16px;
   }
-  
+
   .iconic-collection-header {
     margin-bottom: 32px;
   }
-  
+
   .section-title {
     font-size: 24px;
   }
-  
+
   .destination-card {
     flex-direction: column;
     height: auto;
   }
-  
+
   .card-thumbnail {
     width: 100%;
     height: 200px;
   }
-  
+
   .card-content {
     padding: 16px;
   }
-  
+
   .card-description {
     -webkit-line-clamp: 3;
     line-clamp: 3;

@@ -1,11 +1,9 @@
-'use client';
-
 import Link from 'next/link';
 import Image from 'next/image';
 import './Footer.css';
 
 /**
- * Footer Component — HYBRID (Client for Link component, SSR text via props)
+ * Footer Component — SERVER COMPONENT
  * All translated text and locale are passed from the server locale layout.
  */
 export default function Footer({ locale, translations: t }) {

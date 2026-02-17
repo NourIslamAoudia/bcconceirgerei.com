@@ -1,6 +1,4 @@
-'use client';
-
-import Script from 'next/script';
+import Script from "next/script";
 
 /**
  * Google Analytics Component (Non-Blocking)
@@ -9,7 +7,7 @@ import Script from 'next/script';
  */
 export default function Analytics() {
   // Replace with your actual Google Analytics ID
-  const GA_ID = process.env.NEXT_PUBLIC_GA_ID || 'G-XXXXXXXXXX';
+  const GA_ID = process.env.NEXT_PUBLIC_GA_ID || "G-XXXXXXXXXX";
 
   return (
     <>
@@ -18,7 +16,7 @@ export default function Analytics() {
         strategy="afterInteractive"
         src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
       />
-      
+
       {/* Initialize GA */}
       <Script
         id="google-analytics"

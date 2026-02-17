@@ -1,17 +1,14 @@
-'use client';
-
-import React, { useState } from 'react';
-import './HeroSection.css';
-import ContactFormModal from './ContactFormModal';
+import React from "react";
+import "./HeroSection.css";
+import ContactButton from "./ContactButton";
 
 /**
- * HeroSection Component — HYBRID (Client for modal state, SSR text via props)
+ * HeroSection Component — SERVER COMPONENT
  * Fullscreen background video with dark overlay and centered hero text.
  * Text is passed as props from the server page for SSR/SEO.
+ * The interactive button + modal is delegated to the ContactButton client component.
  */
 const HeroSection = ({ title, subtitle, button, modalTitle }) => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
   return (
     <section className="hero-section">
       {/* Background Video - Optimized for LCP */}
@@ -38,25 +35,10 @@ const HeroSection = ({ title, subtitle, button, modalTitle }) => {
 
       {/* Hero Content */}
       <div className="hero-content">
-        <h1 className="hero-title">
-          {title}
-        </h1>
-        <p className="hero-subtitle">
-          {subtitle}
-        </p>
-        <button
-          className="estimation-button"
-          onClick={() => setIsModalOpen(true)}
-        >
-          {button}
-        </button>
+        <h1 className="hero-title">{title}</h1>
+        <p className="hero-subtitle">{subtitle}</p>
+        <ContactButton label={button} modalTitle={modalTitle} />
       </div>
-
-      <ContactFormModal
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-        title={modalTitle}
-      />
     </section>
   );
 };

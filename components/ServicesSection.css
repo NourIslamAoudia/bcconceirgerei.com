@@ -6,7 +6,7 @@
 .services-section {
   width: 100%;
   padding: 100px 20px;
-  background: linear-gradient(180deg, #FAF9F6 0%, #F5EEDF 100%);
+  background: linear-gradient(180deg, #faf9f6 0%, #f5eedf 100%);
   position: relative;
 }
 
@@ -26,7 +26,7 @@
 }
 
 .services-main-title {
-  font-family: 'Playfair Display', serif;
+  font-family: "Playfair Display", serif;
   font-size: clamp(32px, 4vw, 48px);
   font-weight: 700;
   color: #1a1a1a;
@@ -36,7 +36,7 @@
 }
 
 .services-intro {
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   font-size: clamp(16px, 1.8vw, 18px);
   line-height: 1.7;
   color: #4a4a4a;
@@ -70,13 +70,16 @@
   border-radius: 30px;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  transition: background-color 0.25s ease, color 0.25s ease, transform 0.2s ease;
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease,
+    transform 0.2s ease;
 }
 
 .services-actions .estimation-button:hover {
   background-color: var(--olive-700);
   color: #fff;
-  box-shadow: 0 8px 30px rgba(112,130,56,0.12);
+  box-shadow: 0 8px 30px rgba(112, 130, 56, 0.12);
   transform: translateY(-3px);
 }
 
@@ -86,7 +89,7 @@
    ============================================ */
 
 .service-card {
-  background: #FAF9F6;
+  background: #faf9f6;
   border-radius: 16px;
   overflow: hidden;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
@@ -110,13 +113,13 @@
    Figma dimensions: 349.98px × 234.83px
    ============================================ */
 
-  .service-card-image-wrapper {
-    width: 100%;
-    height: 235px;
-    overflow: hidden;
-    position: relative;
-    background: #e5e5e5;
-  }
+.service-card-image-wrapper {
+  width: 100%;
+  height: 235px;
+  overflow: hidden;
+  position: relative;
+  background: #e5e5e5;
+}
 
 .service-card-image {
   width: 100%;
@@ -149,7 +152,7 @@
 }
 
 .service-category {
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.1em;
@@ -161,7 +164,7 @@
 }
 
 .service-date {
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   font-size: 13px;
   color: #999;
   font-weight: 500;
@@ -169,7 +172,7 @@
 
 /* Service Title */
 .service-title {
-  font-family: 'Playfair Display', serif;
+  font-family: "Playfair Display", serif;
   font-size: 24px;
   font-weight: 700;
   color: #1a1a1a;
@@ -199,7 +202,7 @@
   display: flex;
   align-items: flex-start;
   gap: 12px;
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   font-size: 15px;
   line-height: 1.6;
   color: #4a4a4a;
@@ -309,7 +312,7 @@
   }
 
   .service-card-content {
-    padding: 20px 20px 24px;;
+    padding: 20px 20px 24px;
   }
 
   .service-title {
@@ -340,36 +343,40 @@
   }
 }
 
-/* Run animations only when the grid is in view */
-.services-grid.in-view .service-card {
+/* Run animations only when the grid is in view (AnimateInView adds .is-visible) */
+.services-grid.is-visible .service-card {
   animation: fadeInUp 0.6s ease-out forwards;
 }
 
-.services-grid.in-view .service-card:nth-child(1) {
+.services-grid.is-visible .service-card:nth-child(1) {
   animation-delay: 0.08s;
 }
 
-.services-grid.in-view .service-card:nth-child(2) {
+.services-grid.is-visible .service-card:nth-child(2) {
   animation-delay: 0.16s;
 }
 
-.services-grid.in-view .service-card:nth-child(3) {
+.services-grid.is-visible .service-card:nth-child(3) {
   animation-delay: 0.24s;
 }
 
-.services-grid.in-view .service-card:nth-child(4) {
+.services-grid.is-visible .service-card:nth-child(4) {
   animation-delay: 0.32s;
 }
 
 /* Optional: Add a subtle pattern or texture to the background */
 .services-section::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background-image: radial-gradient(circle at 1px 1px, rgba(112, 130, 56, 0.03) 1px, transparent 0);
+  background-image: radial-gradient(
+    circle at 1px 1px,
+    rgba(112, 130, 56, 0.03) 1px,
+    transparent 0
+  );
   background-size: 40px 40px;
   pointer-events: none;
 }
