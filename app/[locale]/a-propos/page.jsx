@@ -13,27 +13,28 @@ export async function generateMetadata({ params }) {
   const { locale } = await params;
   const isEn = locale === "en";
   const title = isEn
-    ? "About Us | B&C Conciergerie Côte d'Azur"
-    : "À Propos | B&C Conciergerie Côte d'Azur";
+    ? "À Propos de B\u0026C Conciergerie Nice | Notre Histoire \u0026 Valeurs"
+    : "À Propos de B\u0026C Conciergerie Nice | Notre Histoire \u0026 Valeurs";
   const description = isEn
-    ? "Discover B&C Conciergerie, your premium property management partner on the French Riviera. Our values: passion, excellence, innovation, partnership."
-    : "Découvrez B&C Conciergerie, votre partenaire de gestion locative premium sur la Côte d'Azur. Nos valeurs : passion, excellence, innovation, partenariat.";
+    ? "Discover B\u0026C Conciergerie Nice, your trusted partner for seasonal rental management in Nice. Our expertise, values, commitment."
+    : "Découvrez B\u0026C Conciergerie Nice, votre partenaire de confiance pour la gestion location saisonnière à Nice. Notre expertise, nos valeurs, notre engagement.";
   return {
     title,
     description,
-    keywords: isEn
-      ? [
-          "about B&C conciergerie",
-          "concierge french riviera",
-          "property management team nice",
-          "luxury concierge values",
-        ]
-      : [
-          "à propos B&C conciergerie",
-          "conciergerie côte d'azur",
-          "équipe gestion locative nice",
-          "valeurs conciergerie luxe",
-        ],
+    keywords: [
+      "conciergerie Airbnb Nice",
+      "location airbnb Nice",
+      "conciergerie Nice",
+      "gestion locative Nice",
+      "conciergerie villa Nice",
+      "conciergerie appartement Nice",
+      "location saisonnière Nice",
+      "gestion airbnb Nice",
+      "conciergerie de luxe Nice",
+      "gestion Airbnb Monaco",
+      "conciergerie premium Cannes",
+      "gestion de biens Antibes",
+    ],
     openGraph: {
       type: "website",
       locale: isEn ? "en_GB" : "fr_FR",

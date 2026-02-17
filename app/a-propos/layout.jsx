@@ -1,14 +1,20 @@
 export const metadata = {
-  title: "À Propos de B&C Conciergerie | Notre Histoire & Valeurs",
+  title: "À Propos de B\u0026C Conciergerie Nice | Notre Histoire \u0026 Valeurs",
   description:
-    "Découvrez B&C Conciergerie, votre partenaire de confiance sur la Côte d'Azur. Notre expertise, nos valeurs, notre engagement pour une gestion locative d'excellence.",
+    "Découvrez B\u0026C Conciergerie Nice, votre partenaire de confiance pour la gestion location saisonnière à Nice. Notre expertise, nos valeurs, notre engagement.",
   keywords: [
-    "à propos b&c conciergerie",
-    "histoire conciergerie nice",
-    "valeurs conciergerie",
-    "équipe conciergerie côte d'azur",
-    "expertise gestion locative",
-    "conciergerie de confiance",
+    "conciergerie Airbnb Nice",
+    "location airbnb Nice",
+    "conciergerie Nice",
+    "gestion locative Nice",
+    "conciergerie villa Nice",
+    "conciergerie appartement Nice",
+    "location saisonnière Nice",
+    "gestion airbnb Nice",
+    "conciergerie de luxe Nice",
+    "gestion Airbnb Monaco",
+    "conciergerie premium Cannes",
+    "gestion de biens Antibes",
   ],
   robots: {
     index: true,
@@ -19,9 +25,9 @@ export const metadata = {
     },
   },
   openGraph: {
-    title: "À Propos de B&C Conciergerie | Notre Histoire & Valeurs",
+    title: "À Propos de B\u0026C Conciergerie Nice | Notre Histoire \u0026 Valeurs",
     description:
-      "Découvrez B&C Conciergerie, votre partenaire de confiance sur la Côte d'Azur.",
+      "Découvrez B\u0026C Conciergerie Nice, votre partenaire de confiance pour la gestion location saisonnière à Nice.",
     url: "https://www.bcconciergerie.com/a-propos",
     images: [
       {

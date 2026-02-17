@@ -7,27 +7,28 @@ export async function generateMetadata({ params }) {
   const { locale } = await params;
   const isEn = locale === "en";
   const title = isEn
-    ? "Our Offers | B&C Conciergerie Côte d'Azur"
-    : "Nos Offres | B&C Conciergerie Côte d'Azur";
+    ? "Offres Conciergerie Airbnb Nice | Tarifs Gestion Locative – B\u0026C"
+    : "Offres Conciergerie Airbnb Nice | Tarifs Gestion Locative – B\u0026C";
   const description = isEn
-    ? "Exclusive launch and partner offers for your Airbnb management on the French Riviera. Nice, Monaco, Cannes."
-    : "Offres exclusives de lancement et partenariat pour votre gestion locative Airbnb sur la Côte d'Azur. Nice, Monaco, Cannes.";
+    ? "Explore our Airbnb concierge offers in Nice. Flexible packages, seasonal rental management Nice, Monaco, Cannes."
+    : "Explorez nos offres de conciergerie Airbnb à Nice sur-mesure. Packages flexibles, gestion location saisonnière Nice, Monaco, Cannes.";
   return {
     title,
     description,
-    keywords: isEn
-      ? [
-          "airbnb management offer",
-          "concierge launch offer nice",
-          "property management discount",
-          "rental management french riviera",
-        ]
-      : [
-          "offre gestion airbnb",
-          "offre lancement conciergerie nice",
-          "réduction gestion locative",
-          "gestion locative côte d'azur",
-        ],
+    keywords: [
+      "conciergerie Airbnb Nice",
+      "location airbnb Nice",
+      "conciergerie Nice",
+      "gestion locative Nice",
+      "conciergerie villa Nice",
+      "conciergerie appartement Nice",
+      "location saisonnière Nice",
+      "gestion airbnb Nice",
+      "conciergerie de luxe Nice",
+      "gestion Airbnb Monaco",
+      "conciergerie premium Cannes",
+      "gestion de biens Antibes",
+    ],
     openGraph: {
       type: "website",
       locale: isEn ? "en_GB" : "fr_FR",

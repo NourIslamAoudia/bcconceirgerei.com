@@ -1,18 +1,23 @@
 export const metadata = {
-  title: "Nos Offres de Conciergerie | B&C Côte d'Azur",
+  title: "Offres Conciergerie Airbnb Nice | Tarifs Gestion Locative – B\u0026C",
   description:
-    "Explorez nos offres de conciergerie sur-mesure pour votre propriété. Packages flexibles adaptés à vos besoins. Gestion complète, ménage, accueil. Devis gratuit.",
+    "Explorez nos offres de conciergerie Airbnb à Nice sur-mesure. Packages flexibles, gestion location saisonnière Nice, Monaco, Cannes. Devis gratuit.",
   keywords: [
-    "offres conciergerie",
-    "packages gestion locative",
-    "tarifs conciergerie nice",
-    "offre gestion airbnb",
-    "services à la carte",
-    "conciergerie sur mesure",
-    "devis gratuit conciergerie",
+    "conciergerie Airbnb Nice",
+    "location airbnb Nice",
+    "conciergerie Nice",
+    "gestion locative Nice",
+    "conciergerie villa Nice",
+    "conciergerie appartement Nice",
+    "location saisonnière Nice",
+    "gestion airbnb Nice",
+    "conciergerie de luxe Nice",
+    "gestion Airbnb Monaco",
+    "conciergerie premium Cannes",
+    "gestion de biens Antibes",
   ],
   openGraph: {
-    title: "Nos Offres de Conciergerie | B&C Côte d'Azur",
+    title: "Offres Conciergerie Airbnb Nice | Tarifs Gestion Locative – B\u0026C",
     description:
       "Explorez nos offres de conciergerie sur-mesure pour votre propriété. Packages flexibles adaptés à vos besoins.",
     url: "https://www.bcconciergerie.com/offres",

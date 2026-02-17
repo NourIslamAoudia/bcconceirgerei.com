@@ -13,16 +13,16 @@ export const translations = {
       contactUs: "Contactez-nous",
     },
     hero: {
-      title: "B&C pour bienveillance &Confiance",
+      title: "B\u0026C Conciergerie Airbnb à Nice pour Bienveillance \u0026 Confiance",
       subtitle: "Votre bien, notre expertise, Votre tranquillité",
       button: "Demander une estimation gratuite",
       modalTitle: "Demande d'Estimation Gratuite",
     },
     welcome: {
       title: "Bienvenue chez",
-      subtitle: "B&C Conciergerie Côte d'Azur",
+      subtitle: "B\u0026C Conciergerie Nice",
       description1:
-        "Conciergerie haut de gamme et de gestion locative dédié aux propriétaires souhaitant valoriser et simplifier la gestion de leur bien sur la Côte d'Azur de Nice à Monaco, en passant par Cannes et les environs.",
+        "Conciergerie haut de gamme de gestion location saisonnière Nice dédié aux propriétaires souhaitant valoriser et simplifier la gestion de leur bien sur la Côte d'Azur de Nice à Monaco, en passant par Cannes et les environs.",
       description2:
         "Nous prenons soin de votre bien immobilier et de votre propriété de luxe comme si c'était le nôtre avec exigence, élégance et discrétion.",
       description3:
@@ -42,26 +42,26 @@ export const translations = {
       partnerButton: "Découvrir l'offre",
     },
     whyChooseUs: {
-      title: "Pourquoi Choisir B&C Conciergerie Côte d'Azur",
+      title: "Pourquoi Choisir B\u0026C Conciergerie Nice",
       benefit1Title: "Sérénité Totale pour Votre Gestion de Biens",
       benefit1Desc:
-        "Nous gérons chaque aspect de vos locations saisonnières sur la Côte d'Azur, sans compromis.",
+        "Nous gérons chaque aspect de vos locations saisonnières à Nice, sans compromis.",
       benefit2Title: "Performance Locative Optimale",
       benefit2Desc:
         "Avec notre expertise en gestion Airbnb, maximisez vos revenus locatifs tout au long de l'année.",
       benefit3Title: "Qualité Premium & Conciergerie de Luxe",
       benefit3Desc:
         "Un service d'excellence pour votre bien immobilier, de l'entretien à l'accueil des locataires.",
-      benefit4Title: "Accompagnement Personnalisé sur la Côte d'Azur",
+      benefit4Title: "Accompagnement Personnalisé à Nice",
       benefit4Desc:
         "Un interlocuteur dédié à Nice, Monaco ou Cannes pour répondre à tous vos besoins de gestion.",
     },
     nosEngagements: {
       badge: "NOS ENGAGEMENTS",
-      title: "Nos Engagements - Conciergerie Responsable Côte d'Azur",
+      title: "Nos Engagements - Conciergerie Responsable Nice",
       description:
-        "Nous croyons en une conciergerie plus humaine, responsable et élégante pour la gestion de vos propriétés de luxe.",
-      item1: "Collaboration avec des prestataires locaux de la Côte d'Azur",
+        "Conciergerie responsable Nice : Nous croyons en une conciergerie plus humaine, responsable et élégante pour la gestion de vos propriétés de luxe.",
+      item1: "Collaboration avec des prestataires locaux de Nice",
       item2: "Entretien professionnel haut de gamme et ménage conciergerie",
       item3: "Transparence et communication claire sur votre gestion locative",
       item4: "Engagement pour la durabilité de votre bien immobilier",
@@ -69,7 +69,7 @@ export const translations = {
     destinations: {
       badge: "DESTINATIONS EN VEDETTE",
       title: "Gestion Locative de Nice à Monaco,",
-      titleHighlight: "L'excellence sur toute la Côte d'Azur",
+      titleHighlight: "L'excellence sur toute Nice",
       nice: {
         title: "Nice",
         location: "Riviera Française",
@@ -109,9 +109,9 @@ export const translations = {
     },
     services: {
       mainTitle:
-        "Services de Conciergerie Côte d'Azur - Gestion Locative Professionnelle",
+        "Services de Conciergerie à Nice - Gestion saisonnière professionnelle",
       intro:
-        "Avec B&C Conciergerie Côte d'Azur, la location saisonnière et la gestion locative Airbnb deviennent simples, fluides et rentables. Nous prenons en charge toutes les étapes de gestion de votre propriété à Nice, Monaco et Cannes, pour que votre bien soit toujours impeccable, vos voyageurs satisfaits et vos revenus locatifs optimisés.",
+        "Avec B\u0026C Conciergerie Nice, la location saisonnière et la gestion locative Airbnb deviennent simples, fluides et rentables. Nous prenons en charge toutes les étapes de gestion de votre propriété à Nice, Monaco et Cannes, pour que votre bien soit toujours impeccable, vos voyageurs satisfaits et vos revenus locatifs optimisés.",
       cta: "Demander un Devis Gratuit",
       service1: {
         title: "Gestion Locative Complète Airbnb & Location Courte Durée",
@@ -141,7 +141,7 @@ export const translations = {
         features: [
           "Check-in/check-out personnalisés pour vos locations saisonnières",
           "Disponibilité 7j/7 pendant le séjour",
-          "Recommandations locales sur la Côte d'Azur et services à la carte",
+          "Recommandations locales à Nice et services à la carte",
         ],
       },
       service4: {
@@ -157,9 +157,9 @@ export const translations = {
     },
     nosLogements: {
       badge: "NOS PROPRIÉTÉS",
-      title: "Nos Logements de Luxe Côte d'Azur",
+      title: "Nos Logements de Luxe Nice",
       intro:
-        "Du studio intimiste à la villa d'exception, nous gérons une sélection rigoureuse de propriétés sur la Côte d'Azur, à Nice, Monaco et Cannes. Chaque bien immobilier bénéficie de notre expertise en gestion locative pour une valorisation optimale et des revenus locatifs maximisés via Airbnb et location courte durée.",
+        "Du studio intimiste à la villa d'exception, nous gérons une sélection rigoureuse de propriétés à Nice, Monaco et Cannes. Chaque bien immobilier bénéficie de notre expertise en gestion locative pour une valorisation optimale et des revenus locatifs maximisés via Airbnb et location courte durée.",
       category1: "Vue Mer",
       title1: "Appartements Vue Mer",
       desc1:
@@ -187,10 +187,10 @@ export const translations = {
       introP1:
         "Bienvenue sur notre page dédiée aux offres exclusives de lancement !",
       introP2:
-        "Chez B&C Conciergerie Côte d'Azur, nous croyons que chaque collaboration mérite d'être récompensée surtout celles qui commencent dès le début de l'aventure.",
+        "Chez B\u0026C Conciergerie Nice, nous croyons que chaque collaboration mérite d'être récompensée surtout celles qui commencent dès le début de l'aventure.",
       introP3:
         "C'est pourquoi nous avons imaginé des avantages uniques pour nos premiers clients et pour les propriétaires partenaires qui nous font confiance.",
-      alertText: "Toutes nos offres sont disponibles jusqu'à fin janvier 2026.",
+      alertText: "Toutes nos offres sont disponibles jusqu'à fin 2026.",
       alertSubtext: "Alors ne tardez pas à en profiter !",
     },
     servicesPage: {
@@ -200,7 +200,7 @@ export const translations = {
       introHeading: "SERVICES",
       introTitle: "NOS EXPERTISES",
       introText:
-        "Avec B&C Conciergerie Côte d'Azur, votre bien devient bien plus qu'une location — c'est une expérience haut de gamme pour vos voyageurs, et une tranquillité d'esprit totale pour vous.",
+        "Avec B\u0026C Conciergerie Nice, votre bien devient bien plus qu'une location — c'est une expérience haut de gamme pour vos voyageurs, et une tranquillité d'esprit totale pour vous.",
       gestionTitle: "Gestion locative complète",
       gestionDesc:
         "Création et optimisation des annonces, tarification dynamique, gestion du calendrier et sélection rigoureuse des voyageurs. Nous maximisons votre taux d'occupation et votre rentabilité.",
@@ -215,19 +215,19 @@ export const translations = {
         "Conseils en aménagement et décoration pour sublimer votre logement. Photographie professionnelle pour créer des annonces attractives qui séduisent dès le premier regard.",
       ctaTitle: "Prêt à confier votre bien à des experts ?",
       ctaText:
-        "Contactez-nous dès aujourd'hui pour obtenir une estimation gratuite et découvrir comment B&C Conciergerie Côte d'Azur peut transformer votre propriété en source de revenus sereins et durables.",
+        "Contactez-nous dès aujourd'hui pour obtenir une estimation gratuite et découvrir comment B\u0026C Conciergerie Nice peut transformer votre propriété en source de revenus sereins et durables.",
       ctaButton: "Demander une estimation gratuite",
     },
     aproposPage: {
-      heroBadge: "Conciergerie Côte d'Azur",
+      heroBadge: "Conciergerie Nice",
       heroTitle:
-        "Une conciergerie née sur la Côte d'Azur, inspirée par l'art de vivre méditerranéen.",
+        "Une conciergerie née à Nice, inspirée par l'art de vivre méditerranéen.",
       storyTag: "Notre Histoire",
       storyP1:
-        "Fondée à Nice, B&C Conciergerie Côte d'Azur accompagne les propriétaires qui recherchent plus qu'une simple gestion locative : une expérience de confiance, de transparence et d'excellence.",
+        "Fondée à Nice, B\u0026C Conciergerie Nice accompagne les propriétaires qui recherchent plus qu'une simple gestion locative : une expérience de confiance, de transparence et d'excellence.",
       storyVision: "Notre vision :",
       storyVisionText:
-        "offrir un service de conciergerie locale, haut de gamme et durable, à la hauteur du prestige de la Côte d'Azur.",
+        "offrir un service de conciergerie locale, haut de gamme et durable, à la hauteur du prestige de Nice.",
       storyP2:
         "Nous allions rigueur professionnelle et élégance niçoise, pour une gestion sans stress et un rendement optimal.",
       valeursTag: "Nos Valeurs",
@@ -244,7 +244,7 @@ export const translations = {
     },
     footer: {
       tagline:
-        "Votre conciergerie sur Côte d'Azur. Un service d'excellence pour des séjours inoubliables.",
+        "Votre conciergerie à Nice. Un service d'excellence pour des séjours inoubliables.",
       siteMap: "PLAN DU SITE",
       destinations: "DESTINATIONS",
       findUs: "NOUS TROUVER",
@@ -304,13 +304,13 @@ export const translations = {
         "Profitez de conditions exceptionnelles pour débuter avec B&C Conciergerie",
       introTitle: "Bienvenue dans notre programme de lancement !",
       introP1:
-        "Chez B&C Conciergerie Côte d'Azur, nous lançons notre activité avec ambition, passion et une envie profonde de vous offrir le meilleur service de gestion locative.",
+        "Chez B\u0026C Conciergerie Nice, nous lançons notre activité avec ambition, passion et une envie profonde de vous offrir le meilleur service de gestion locative.",
       introP2:
         "Pour célébrer ce départ, nous avons conçu deux offres spéciales pensées pour vous : propriétaires visionnaires, partenaires de confiance et pionniers de notre aventure.",
       introP3:
         "Ces offres limitées sont notre façon de dire merci à celles et ceux qui choisissent de nous faire confiance dès le début.",
       alertText: "Offres limitées dans le temps !",
-      alertSubtext: "Réservées aux inscriptions avant le 31 janvier 2026.",
+      alertSubtext: "Réservées aux inscriptions avant fin 2026.",
 
       offer1Title: "Offre Premiers clients",
       offer1Subtitle: "Offre 1 — Pour nos premiers clients",
@@ -345,7 +345,7 @@ export const translations = {
       durationSubtitle: "Comment profiter de ces offres",
       durationP1:
         "Ces offres sont disponibles pour toute inscription ou signature réalisée",
-      durationP1Bold: "avant le 31 janvier 2026",
+      durationP1Bold: "avant fin 2026",
       durationP2Start:
         "Et bonne nouvelle : même après cette date, si votre contrat est signé à temps, vous conservez votre commission réduite pendant",
       durationP2Bold: "1 an complet",
@@ -374,20 +374,20 @@ export const translations = {
       contactUs: "Contact us",
     },
     hero: {
-      title: "B&C for Benevolence & Trust",
+      title: "B\u0026C Airbnb Concierge in Nice for Benevolence \u0026 Trust",
       subtitle: "Your property, our expertise, Your peace of mind",
       button: "Request a free estimate",
       modalTitle: "Free Estimate Request",
     },
     welcome: {
       title: "Welcome to",
-      subtitle: "B&C Concierge Côte d'Azur",
+      subtitle: "B\u0026C Concierge Nice",
       description1:
-        "High-end concierge and rental management service dedicated to owners wishing to enhance and simplify the management of their property on the Côte d'Azur from Nice to Monaco, including Cannes and the surrounding areas.",
+        "Premium short-term rental management concierge in Nice dedicated to owners wishing to enhance and simplify the management of their property on the French Riviera from Nice to Monaco, through Cannes and the surrounding area.",
       description2:
-        "We take care of your real estate and luxury property as if it were our own with excellence, elegance and discretion.",
+        "We take care of your real estate and luxury property as if it were our own, with rigor, elegance and discretion.",
       description3:
-        "From Airbnb rental to complete property management, we define a smooth and profitable experience with optimized rental income, while enhancing your real estate assets.",
+        "From Airbnb rental to complete property management, we deliver a smooth and profitable experience with optimized rental income, while enhancing your real estate portfolio.",
     },
     nosOffres: {
       title: "Our Offers",
@@ -403,26 +403,26 @@ export const translations = {
       partnerButton: "Discover the offer",
     },
     whyChooseUs: {
-      title: "Why Choose B&C Concierge Côte d'Azur",
+      title: "Why Choose B\u0026C Concierge Nice",
       benefit1Title: "Complete Peace of Mind for Your Property Management",
       benefit1Desc:
-        "We manage every aspect of your seasonal rentals on the Côte d'Azur, without compromise.",
+        "We manage every aspect of your seasonal rentals in Nice, without compromise.",
       benefit2Title: "Optimal Rental Performance",
       benefit2Desc:
         "With our Airbnb management expertise, maximize your rental income throughout the year.",
       benefit3Title: "Premium Quality & Luxury Concierge",
       benefit3Desc:
         "An excellent service for your real estate, from maintenance to tenant reception.",
-      benefit4Title: "Personalized Support on the Côte d'Azur",
+      benefit4Title: "Personalized Support in Nice",
       benefit4Desc:
         "A dedicated contact in Nice, Monaco or Cannes to meet all your management needs.",
     },
     nosEngagements: {
       badge: "OUR COMMITMENTS",
-      title: "Our Commitments - Responsible Concierge Côte d'Azur",
+      title: "Our Commitments - Responsible Concierge Nice",
       description:
-        "We believe in a more human, responsible and elegant concierge service for managing your luxury properties.",
-      item1: "Collaboration with local service providers on the Côte d'Azur",
+        "Responsible Concierge Nice: We believe in a more human, responsible and elegant concierge service for the management of your luxury properties.",
+      item1: "Collaboration with local service providers in Nice",
       item2: "Professional high-end maintenance and concierge cleaning",
       item3:
         "Transparency and clear communication about your rental management",
@@ -431,7 +431,7 @@ export const translations = {
     destinations: {
       badge: "FEATURED DESTINATIONS",
       title: "Rental Management from Nice to Monaco,",
-      titleHighlight: "Excellence throughout the Côte d'Azur",
+      titleHighlight: "Excellence throughout Nice",
       nice: {
         title: "Nice",
         location: "French Riviera",
@@ -471,9 +471,9 @@ export const translations = {
     },
     services: {
       mainTitle:
-        "Côte d'Azur Concierge Services - Professional Rental Management",
+        "Concierge Services in Nice - Professional Seasonal Rental Management",
       intro:
-        "With B&C Concierge Côte d'Azur, seasonal rental and Airbnb rental management become simple, smooth and profitable. We handle all stages of managing your property in Nice, Monaco and Cannes, so that your property is always impeccable, your travelers satisfied and your rental income optimized.",
+        "With B\u0026C Concierge Nice, seasonal rental and Airbnb rental management become simple, smooth and profitable. We handle all stages of managing your property in Nice, Monaco and Cannes, so that your property is always impeccable, your travelers satisfied and your rental income optimized.",
       cta: "Request a Free Quote",
       service1: {
         title: "Complete Airbnb Rental Management & Short-Term Rental",
@@ -503,7 +503,7 @@ export const translations = {
         features: [
           "Personalized check-in/check-out for your seasonal rentals",
           "7/7 availability during the stay",
-          "Local recommendations on the Côte d'Azur and à la carte services",
+          "Local recommendations in Nice and à la carte services",
         ],
       },
       service4: {
@@ -519,9 +519,9 @@ export const translations = {
     },
     nosLogements: {
       badge: "OUR PROPERTIES",
-      title: "Our Luxury Accommodations Côte d'Azur",
+      title: "Our Luxury Accommodations Nice",
       intro:
-        "From intimate studios to exceptional villas, we manage a rigorous selection of properties on the Côte d'Azur, in Nice, Monaco and Cannes. Each property benefits from our rental management expertise for optimal valorization and maximized rental income via Airbnb and short-term rentals.",
+        "From intimate studios to exceptional villas, we manage a rigorous selection of properties in Nice, Monaco and Cannes. Each property benefits from our rental management expertise for optimal valorization and maximized rental income via Airbnb and short-term rentals.",
       category1: "Sea View",
       title1: "Sea View Apartments",
       desc1:
@@ -548,10 +548,10 @@ export const translations = {
       introTitle: "Our Special Launch Offers",
       introP1: "Welcome to our page dedicated to exclusive launch offers!",
       introP2:
-        "At B&C Concierge Côte d'Azur, we believe that every collaboration deserves to be rewarded, especially those that start from the very beginning of the adventure.",
+        "At B\u0026C Concierge Nice, we believe that every collaboration deserves to be rewarded, especially those that start from the very beginning of the adventure.",
       introP3:
         "That's why we have created unique benefits for our first customers and for the partner owners who trust us.",
-      alertText: "All our offers are available until the end of January 2026.",
+      alertText: "All our offers are available until the end of 2026.",
       alertSubtext: "So don't delay in taking advantage!",
     },
     servicesPage: {
@@ -561,7 +561,7 @@ export const translations = {
       introHeading: "SERVICES",
       introTitle: "OUR EXPERTISE",
       introText:
-        "With B&C Concierge Côte d'Azur, your property becomes much more than a rental — it's a high-end experience for your travelers, and complete peace of mind for you.",
+        "With B\u0026C Concierge Nice, your property becomes much more than a rental — it's a high-end experience for your travelers, and complete peace of mind for you.",
       gestionTitle: "Complete rental management",
       gestionDesc:
         "Creation and optimization of listings, dynamic pricing, calendar management and rigorous traveler selection. We maximize your occupancy rate and profitability.",
@@ -576,19 +576,19 @@ export const translations = {
         "Design and decoration advice to enhance your accommodation. Professional photography to create attractive listings that seduce at first glance.",
       ctaTitle: "Ready to entrust your property to experts?",
       ctaText:
-        "Contact us today to get a free estimate and discover how B&C Concierge Côte d'Azur can transform your property into a source of serene and sustainable income.",
+        "Contact us today to get a free estimate and discover how B\u0026C Concierge Nice can transform your property into a source of serene and sustainable income.",
       ctaButton: "Request a free estimate",
     },
     aproposPage: {
-      heroBadge: "Côte d'Azur Concierge",
+      heroBadge: "Nice Concierge",
       heroTitle:
-        "A concierge born on the Côte d'Azur, inspired by the Mediterranean art of living.",
+        "A concierge born in Nice, inspired by the Mediterranean art of living.",
       storyTag: "Our Story",
       storyP1:
-        "Founded in Nice, B&C Concierge Côte d'Azur supports owners looking for more than just rental management: an experience of trust, transparency and excellence.",
+        "Founded in Nice, B\u0026C Concierge Nice supports owners looking for more than just rental management: an experience of trust, transparency and excellence.",
       storyVision: "Our vision:",
       storyVisionText:
-        "to offer a local, high-end and sustainable concierge service, worthy of the prestige of the Côte d'Azur.",
+        "to offer a local, high-end and sustainable concierge service, worthy of the prestige of Nice.",
       storyP2:
         "We combine professional rigor and Nice elegance, for stress-free management and optimal returns.",
       valeursTag: "Our Values",
@@ -604,7 +604,7 @@ export const translations = {
     },
     footer: {
       tagline:
-        "Your concierge on the Côte d'Azur. An excellent service for unforgettable stays.",
+        "Your concierge in Nice. An excellent service for unforgettable stays.",
       siteMap: "SITE MAP",
       destinations: "DESTINATIONS",
       findUs: "FIND US",
@@ -663,13 +663,13 @@ export const translations = {
       heroSubtitle: "Enjoy exceptional conditions to start with B&C Concierge",
       introTitle: "Welcome to our launch program!",
       introP1:
-        "At B&C Concierge Côte d'Azur, we are launching our business with ambition, passion and a deep desire to offer you the best rental management service.",
+        "At B\u0026C Concierge Nice, we are launching our business with ambition, passion and a deep desire to offer you the best rental management service.",
       introP2:
         "To celebrate this start, we have designed two special offers designed for you: visionary owners, trusted partners and pioneers of our adventure.",
       introP3:
         "These limited offers are our way of saying thank you to those who choose to trust us from the beginning.",
       alertText: "Time-limited offers!",
-      alertSubtext: "Reserved for registrations before January 31, 2026.",
+      alertSubtext: "Reserved for registrations before the end of 2026.",
 
       offer1Title: "First Customers Offer",
       offer1Subtitle: "Offer 1 — For our first customers",
@@ -703,7 +703,7 @@ export const translations = {
       durationSubtitle: "How to take advantage of these offers",
       durationP1:
         "These offers are available for any registration or signature made",
-      durationP1Bold: "before January 31, 2026",
+      durationP1Bold: "before the end of 2026",
       durationP2Start:
         "And good news: even after this date, if your contract is signed on time, you keep your reduced commission for",
       durationP2Bold: "a full year",

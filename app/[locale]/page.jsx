@@ -14,11 +14,25 @@ export async function generateMetadata({ params }) {
   const isEn = locale === "en";
   return {
     title: isEn
-      ? "B&C Conciergerie Côte d'Azur | Airbnb Management Nice Monaco"
-      : "B&C Conciergerie Côte d'Azur | Gestion Airbnb Nice Monaco",
+      ? "Airbnb Concierge in Nice | Short-Term Rental Management \u2013 B\u0026C"
+      : "Conciergerie Airbnb Nice | Gestion Location Saisonnière – B\u0026C",
     description: isEn
-      ? "Premium concierge services on the French Riviera. Airbnb management, professional cleaning, optimized revenue. Nice, Monaco, Cannes. Free quote."
-      : "Conciergerie haut de gamme sur la Côte d'Azur. Gestion locative Airbnb, ménage professionnel, revenus optimisés. Nice, Monaco, Cannes. Devis gratuit.",
+      ? "Premium concierge services in Nice. Airbnb management, professional cleaning, optimized revenue. Nice, Monaco, Cannes. Free quote."
+      : "Conciergerie Airbnb à Nice haut de gamme pour la gestion location saisonnière. De Nice à Monaco et Cannes. Revenus locatifs optimisés. Devis gratuit.",
+    keywords: [
+      "conciergerie Airbnb Nice",
+      "location airbnb Nice",
+      "conciergerie Nice",
+      "gestion locative Nice",
+      "conciergerie villa Nice",
+      "conciergerie appartement Nice",
+      "location saisonnière Nice",
+      "gestion airbnb Nice",
+      "conciergerie de luxe Nice",
+      "gestion Airbnb Monaco",
+      "conciergerie premium Cannes",
+      "gestion de biens Antibes",
+    ],
     alternates: {
       canonical: `https://www.bcconciergerie.com/${locale}`,
       languages: {
@@ -42,7 +56,7 @@ export default async function HomePage({ params }) {
     inLanguage: isEn ? "en" : "fr",
     publisher: {
       "@type": "Organization",
-      name: "B&C Conciergerie Côte d'Azur",
+      name: "B\u0026C Conciergerie Nice",
       url: "https://www.bcconciergerie.com",
       logo: "https://www.bcconciergerie.com/icon_new.png",
     },
@@ -52,11 +66,11 @@ export default async function HomePage({ params }) {
     "@context": "https://schema.org",
     "@type": "WebPage",
     name: isEn
-      ? "B&C Conciergerie Côte d'Azur | Airbnb Management Nice Monaco"
-      : "B&C Conciergerie Côte d'Azur | Gestion Airbnb Nice Monaco",
+      ? "Airbnb Concierge in Nice | Short-Term Rental Management \u2013 B\u0026C"
+      : "Conciergerie Airbnb \u00e0 Nice | Gestion Location Saisonni\u00e8re \u2013 B\u0026C",
     description: isEn
-      ? "Premium concierge services on the French Riviera. Airbnb management, professional cleaning, optimized revenue."
-      : "Conciergerie haut de gamme sur la Côte d'Azur. Gestion locative Airbnb, ménage professionnel, revenus optimisés.",
+      ? "Premium concierge services in Nice. Airbnb management, professional cleaning, optimized revenue."
+      : "Conciergerie Airbnb \u00e0 Nice haut de gamme. Gestion location saisonni\u00e8re, m\u00e9nage professionnel, revenus optimis\u00e9s.",
     url: `https://www.bcconciergerie.com/${locale}`,
     inLanguage: isEn ? "en" : "fr",
     isPartOf: {

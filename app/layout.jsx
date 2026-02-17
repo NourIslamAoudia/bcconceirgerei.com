@@ -14,32 +14,31 @@ const inter = Inter({
 
 export const metadata = {
   metadataBase: new URL("https://www.bcconciergerie.com"),
-  title: "B&C Conciergerie",
+  title: "Conciergerie Airbnb \u00e0 Nice | Gestion Location Saisonni\u00e8re \u2013 B\u0026C",
   description:
-    "Conciergerie haut de gamme sur la Côte d'Azur. Gestion locative Airbnb, ménage professionnel, revenus optimisés. Nice, Monaco, Cannes. Devis gratuit.",
+    "Conciergerie Airbnb \u00e0 Nice haut de gamme pour la gestion location saisonni\u00e8re. De Nice \u00e0 Monaco et Cannes. Revenus locatifs optimis\u00e9s. Devis gratuit.",
   keywords: [
-    "conciergerie côte d'azur",
-    "gestion locative monaco",
-    "location courte durée nice",
-    "ménage conciergerie",
-    "gestion des appartements",
-    "airbnb côte d'azur",
-    "location airbnb nice",
-    "gestion de biens monaco",
-    "conciergerie nice",
-    "conciergerie luxe monaco",
-    "propriété de luxe",
-    "revenus locatifs",
-    "location saisonnière",
-    "gestion de propriété",
-    "services premium",
-    "entretien professionnel",
-    "optimisation tarifaire",
-    "blog conciergerie nice",
-    "conseils airbnb nice",
-    "réglementation airbnb nice",
-    "rentabilité location courte durée",
-    "avis 5 étoiles airbnb",
+    "conciergerie Airbnb Nice",
+    "location airbnb",
+    "conciergerie Nice",
+    "conciergerie villa Nice",
+    "gestion locative Nice",
+    "location saisonni\u00e8re Nice",
+    "service location saisonni\u00e8re Nice",
+    "location courte dur\u00e9e Nice",
+    "conciergerie de luxe Nice",
+    "gestion airbnb Nice",
+    "gestion Airbnb Monaco",
+    "conciergerie premium Cannes",
+    "gestion de biens Antibes",
+    "conciergerie appartement Nice",
+    "Airbnb concierge Nice",
+    "Nice property management",
+    "short-term rental Nice",
+    "luxury concierge Nice",
+    "Airbnb management Nice France",
+    "holiday rental management Nice",
+    "vacation rental concierge Nice",
   ],
   authors: [{ name: "B&C Conciergerie" }],
   creator: "B&C Conciergerie",
@@ -60,24 +59,24 @@ export const metadata = {
     locale: "fr_FR",
     url: "https://www.bcconciergerie.com",
     siteName: "B&C Conciergerie",
-    title: "B&C Conciergerie Côte d'Azur | Gestion Airbnb Nice Monaco",
+    title: "B\u0026C Conciergerie Nice | Gestion Airbnb Location Saisonni\u00e8re",
     description:
-      "Conciergerie haut de gamme sur la Côte d'Azur. Gestion locative Airbnb, ménage professionnel, revenus optimisés. Nice, Monaco, Cannes. Devis gratuit.",
+      "Conciergerie Airbnb \u00e0 Nice haut de gamme pour la gestion location saisonni\u00e8re. De Nice \u00e0 Monaco et Cannes. Revenus locatifs optimis\u00e9s. Devis gratuit.",
     images: [
       {
         url: "https://www.bcconciergerie.com/icon_new.png",
         width: 1200,
         height: 630,
-        alt: "B&C Conciergerie Côte d'Azur",
+        alt: "B\u0026C Conciergerie Nice",
         type: "image/png",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "B&C Conciergerie Côte d'Azur | Gestion Airbnb Nice Monaco",
+    title: "B\u0026C Conciergerie Nice | Gestion Airbnb Location Saisonni\u00e8re",
     description:
-      "Conciergerie haut de gamme sur la Côte d'Azur. Gestion locative Airbnb, ménage professionnel, revenus optimisés. Nice, Monaco, Cannes. Devis gratuit.",
+      "Conciergerie Airbnb \u00e0 Nice haut de gamme pour la gestion location saisonni\u00e8re. De Nice \u00e0 Monaco et Cannes. Revenus locatifs optimis\u00e9s. Devis gratuit.",
     images: ["https://www.bcconciergerie.com/icon_new.png"],
   },
   alternates: {
@@ -252,7 +251,7 @@ export default function RootLayout({ children }) {
           }}
         />
       </head>
-      <body className={inter.variable}>
+      <body className={inter.variable} suppressHydrationWarning>
         <LanguageProvider>{children}</LanguageProvider>
         {/* Analytics loaded after interactive - non-blocking */}
         <Analytics />
