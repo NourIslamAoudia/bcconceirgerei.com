@@ -301,7 +301,7 @@ export const translations = {
     offresPage: {
       heroTitle: "Nos Offres Exclusives de Lancement",
       heroSubtitle:
-        "Profitez de conditions exceptionnelles pour débuter avec B&C Conciergerie",
+        "Profitez de conditions exceptionnelles pour débuter avec B&C Conciergerie Nice",
       introTitle: "Bienvenue dans notre programme de lancement !",
       introP1:
         "Chez B\u0026C Conciergerie Nice, nous lançons notre activité avec ambition, passion et une envie profonde de vous offrir le meilleur service de gestion locative.",
@@ -660,7 +660,7 @@ export const translations = {
     },
     offresPage: {
       heroTitle: "Our Exclusive Launch Offers",
-      heroSubtitle: "Enjoy exceptional conditions to start with B&C Concierge",
+      heroSubtitle: "Enjoy exceptional conditions to start with B&C Concierge Nice",
       introTitle: "Welcome to our launch program!",
       introP1:
         "At B\u0026C Concierge Nice, we are launching our business with ambition, passion and a deep desire to offer you the best rental management service.",

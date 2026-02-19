@@ -116,8 +116,8 @@ export default async function BlogPage({ params }) {
           </h1>
           <p className="blog-hero-subtitle">
             {isEn
-              ? "Expert Advice and Guides for Airbnb Hosts in Nice and on the French Riviera"
-              : "Conseils et guides experts pour propriétaires Airbnb à Nice et sur la Côte d’Azur"}
+              ? "Expert advice and guides for Airbnb hosts in Nice"
+              : "Conseils et guides d’experts pour les propriétaires Airbnb à Nice"}
           </p>
         </div>
       </section>
