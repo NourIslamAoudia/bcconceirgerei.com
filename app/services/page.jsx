@@ -73,14 +73,14 @@ export default function ServicesPage() {
               <div className="stacked-images-container">
                 <Image
                   src="https://bcconciergerie.com/assets/Gestion2.jpg"
-                  alt="Optimisation des annonces"
+                  alt="Optimisation des annonces Airbnb - Gestion locative Côte d'Azur"
                   width={700}
                   height={500}
                   className="image-back"
                 />
                 <Image
                   src="https://bcconciergerie.com/assets/Gestion1.jpg"
-                  alt="Création et gestion des annonces"
+                  alt="Création et gestion des annonces location saisonnière Nice Monaco"
                   width={700}
                   height={500}
                   className="image-front"
@@ -100,7 +100,7 @@ export default function ServicesPage() {
               <div className="stacked-images-container">
                 <Image
                   src="https://bcconciergerie.com/assets/mainte2.jpg"
-                  alt="Inspection qualité"
+                  alt="Inspection qualité logement - Conciergerie Nice Monaco"
                   width={700}
                   height={500}
                   className="image-back"
