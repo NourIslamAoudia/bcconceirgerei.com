@@ -276,11 +276,67 @@
         }
       }
     }
+    ,
+    {
+      "id": 5,
+      "title": "Airbnb ou location longue durée à Nice : quelle option est la plus rentable en 2026 ?",
+      "slug": "airbnb-vs-location-longue-duree-nice-2026",
+      "author": "B&C Conciergerie",
+      "date": "2026-03-27",
+      "category": "Investissement",
+      "tags": ["airbnb", "location longue durée", "nice", "rentabilité", "investissement", "comparatif"],
+      "excerpt": "Nice est l'une des villes les plus attractives de France pour les investisseurs immobiliers. Pour un propriétaire, la question cruciale est souvent : Airbnb ou location longue durée ? Quelle option génère réellement le meilleur revenu ?",
+      "readTime": "7 min",
+      "content": {
+        "introduction": "Nice est l'une des villes les plus attractives de France pour les investisseurs immobiliers. Entre le tourisme international, les événements professionnels et la qualité de vie exceptionnelle, la demande en location reste soutenue toute l'année.\n\nPour un propriétaire, la question cruciale est souvent : Airbnb ou location longue durée ? Quelle option génère réellement le meilleur revenu, tout en restant conforme à la réglementation locale ?",
+        "sections": [
+          {
+            "title": "Airbnb à Nice : opportunités et contraintes",
+            "content": "Avantages de la location courte durée :\n- Revenus supérieurs : Un appartement en centre-ville peut générer jusqu'à 3 à 5 fois plus qu'une location longue durée classique.\n- Flexibilité : Vous pouvez bloquer certaines périodes pour votre usage personnel.\n- Adapté au tourisme international : Les visiteurs étrangers recherchent principalement des séjours courts.\n\nContraintes à prendre en compte :\n- Règles locales strictes : Limite de 90 jours pour les résidences principales et 3 ans d'autorisation pour les résidences secondaires dans certains quartiers.\n- Gestion quotidienne : Réponses aux voyageurs, check-in/check-out, ménage, linge, maintenance.\n- Saisonnalité : La haute saison est très lucrative, mais la basse saison demande une stratégie tarifaire efficace."
+          },
+          {
+            "title": "Location longue durée : sécurité et stabilité",
+            "content": "Avantages :\n- Revenus réguliers et garantis : Le loyer mensuel assure un flux de trésorerie stable.\n- Moins de contraintes opérationnelles : Pas de check-in/check-out fréquents, pas de ménage entre chaque séjour.\n- Simplicité administrative : Moins de déclarations et de suivi quotidien.\n\nLimites :\n- Revenus plafonnés : Les loyers mensuels sont souvent inférieurs aux revenus potentiels d'une location courte durée.\n- Moins de flexibilité : Un locataire engagé limite l'usage personnel du logement.\n- Impact fiscal : La fiscalité est différente selon le type de location, avec moins de leviers d'optimisation."
+          },
+          {
+            "title": "Les critères pour choisir la bonne option",
+            "content": "1. Quartier et attractivité : Centre-ville, Carré d'Or ou Vieux-Nice sont idéaux pour Airbnb. Les zones moins touristiques se prêtent mieux à la longue durée.\n2. Disponibilité du propriétaire : Airbnb demande un suivi régulier.\n3. Objectifs financiers : Maximiser le revenu ou sécuriser un revenu stable.\n4. Tolérance au risque : Airbnb est plus rentable mais plus variable.\n5. Réglementation : Respecter les quotas et limites locales est indispensable."
+          },
+          {
+            "title": "Comment B&C Conciergerie aide les propriétaires à décider",
+            "content": "Chez B&C Conciergerie, nous accompagnons chaque propriétaire dans l'analyse personnalisée de son bien :\n- Étude du quartier et potentiel locatif\n- Projection de revenus Airbnb vs longue durée\n- Conseils réglementaires pour rester conforme\n- Stratégie personnalisée selon vos objectifs financiers\n\nNotre approche permet de choisir l'option la plus rentable tout en sécurisant l'investissement."
+          }
+        ],
+        "faq": [
+          {
+            "question": "Est-ce rentable de passer à Airbnb avec un logement déjà en longue durée ?",
+            "answer": "Oui, mais il faut optimiser l'annonce, ajuster la tarification et respecter la réglementation."
+          },
+          {
+            "question": "Les revenus Airbnb sont-ils sûrs ?",
+            "answer": "Ils sont supérieurs en moyenne, mais plus variables. Une gestion professionnelle réduit le risque."
+          },
+          {
+            "question": "Puis-je combiner les deux ?",
+            "answer": "Oui. Certains propriétaires louent en courte durée la haute saison et longue durée le reste de l'année."
+          },
+          {
+            "question": "B&C Conciergerie peut-elle gérer cette transition ?",
+            "answer": "Oui, nous accompagnons les propriétaires à chaque étape, du calcul de rentabilité à la gestion complète."
+          }
+        ],
+        "cta": {
+          "title": "Trouvez la stratégie locative idéale pour votre bien à Nice",
+          "description": "Vous êtes propriétaire à Nice et vous hésitez entre Airbnb et location longue durée. Vous souhaitez connaître l'option la plus rentable adaptée à votre situation.",
+          "action": "Contactez B&C Conciergerie pour une analyse comparative gratuite de votre bien."
+        }
+      }
+    }
   ],
   "metadata": {
-    "totalBlogs": 4,
-    "lastUpdated": "2026-02-17",
-    "categories": ["Gestion Airbnb", "Réglementation", "Rentabilité", "Optimisation"],
+    "totalBlogs": 5,
+    "lastUpdated": "2026-03-27",
+    "categories": ["Gestion Airbnb", "Réglementation", "Rentabilité", "Optimisation", "Investissement"],
     "location": "Nice, France",
     "company": "B&C Conciergerie"
   }
