@@ -80,7 +80,6 @@ All schemas include multilingual fields and geo coordinates (Nice, 43.7102, 7.26
 - OpenGraph image configured for link previews
 
 ---
-
 ## Things to Enhance
 
 ### High Priority
