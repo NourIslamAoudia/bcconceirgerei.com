@@ -2,63 +2,44 @@ import Image from "next/image";
 import { getTranslations } from "@/lib/getTranslations";
 import { FaWhatsapp } from "react-icons/fa";
 import "./offres.css";
+import { pageMetadata } from "@/lib/seo";
 
 export async function generateMetadata({ params }) {
   const { locale } = await params;
   const isEn = locale === "en";
-  const title = isEn
-    ? "Offres Conciergerie Airbnb Nice | Tarifs Gestion Locative – B\u0026C"
-    : "Offres Conciergerie Airbnb Nice | Tarifs Gestion Locative – B\u0026C";
-  const description = isEn
-    ? "Explore our Airbnb concierge offers in Nice. Flexible packages, seasonal rental management Nice, Monaco, Cannes."
-    : "Explorez nos offres de conciergerie Airbnb à Nice sur-mesure. Packages flexibles, gestion location saisonnière Nice, Monaco, Cannes.";
-  return {
-    title,
-    description,
-    keywords: [
-      "conciergerie Airbnb Nice",
-      "location airbnb Nice",
-      "conciergerie Nice",
-      "gestion locative Nice",
-      "conciergerie villa Nice",
-      "conciergerie appartement Nice",
-      "location saisonnière Nice",
-      "gestion airbnb Nice",
-      "conciergerie de luxe Nice",
-      "gestion Airbnb Monaco",
-      "conciergerie premium Cannes",
-      "gestion de biens Antibes",
-    ],
-    openGraph: {
-      type: "website",
-      locale: isEn ? "en_GB" : "fr_FR",
-      url: `https://www.bcconciergerie.com/${locale}/offres`,
-      title,
-      description,
-      siteName: "B&C Conciergerie",
-      images: [
-        {
-          url: "https://www.bcconciergerie.com/icon_new.png",
-          width: 1200,
-          height: 630,
-          alt: "B&C Conciergerie Offres",
-        },
+  return pageMetadata({
+    locale,
+    path: "/offres",
+    title: isEn
+      ? "Airbnb Management Offers in Nice | Concierge Pricing – B&C"
+      : "Offres Conciergerie Airbnb Nice | Tarifs Gestion Locative – B&C",
+    description: isEn
+      ? "Explore our Airbnb concierge offers in Nice. Flexible packages for short-term rental management in Nice, Monaco and Cannes."
+      : "Explorez nos offres de conciergerie Airbnb à Nice sur-mesure. Packages flexibles, gestion location saisonnière Nice, Monaco, Cannes.",
+    keywords: isEn
+      ? [
+        "Airbnb concierge Nice",
+        "Airbnb management Nice",
+        "short-term rental management Nice",
+        "holiday rental management French Riviera",
+        "property management Nice",
+        "vacation rental concierge Nice",
+        "Airbnb management Monaco",
+        "Airbnb concierge Cannes",
+      ]
+      : [
+        "conciergerie Airbnb Nice",
+        "conciergerie Nice",
+        "gestion locative Nice",
+        "gestion Airbnb Nice",
+        "location saisonnière Nice",
+        "conciergerie appartement Nice",
+        "conciergerie villa Nice",
+        "gestion Airbnb Monaco",
+        "conciergerie Cannes",
+        "gestion de biens Antibes",
       ],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title,
-      description,
-      images: ["https://www.bcconciergerie.com/icon_new.png"],
-    },
-    alternates: {
-      canonical: `https://www.bcconciergerie.com/${locale}/offres`,
-      languages: {
-        fr: "https://www.bcconciergerie.com/fr/offres",
-        en: "https://www.bcconciergerie.com/en/offres",
-      },
-    },
-  };
+  });
 }
 
 export default async function OffresPage({ params }) {

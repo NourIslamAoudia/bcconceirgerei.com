@@ -3,12 +3,12 @@
   "redirects": [
     {
       "source": "/apropos",
-      "destination": "/a-propos",
+      "destination": "/fr/a-propos",
       "permanent": true
     },
     {
       "source": "/Apropos",
-      "destination": "/a-propos",
+      "destination": "/fr/a-propos",
       "permanent": true
     }
   ],

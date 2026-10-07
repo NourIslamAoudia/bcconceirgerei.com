@@ -5,16 +5,13 @@ import { translations } from '@/locales/translations';
 
 const LanguageContext = createContext();
 
-export function LanguageProvider({ children }) {
-  const [language, setLanguage] = useState('fr');
+export function LanguageProvider({ children, initialLanguage = 'fr' }) {
+  // The URL locale (/fr, /en) is the source of truth for the language
+  const [language, setLanguage] = useState(initialLanguage);
 
-  // Load language from localStorage on mount
   useEffect(() => {
-    const savedLanguage = localStorage.getItem('language');
-    if (savedLanguage && (savedLanguage === 'fr' || savedLanguage === 'en')) {
-      setLanguage(savedLanguage);
-    }
-  }, []);
+    setLanguage(initialLanguage);
+  }, [initialLanguage]);
 
   // Save language to localStorage when it changes
   const changeLanguage = (lang) => {

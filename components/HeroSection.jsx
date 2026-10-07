@@ -19,7 +19,7 @@ const HeroSection = ({ title, subtitle, button, modalTitle }) => {
         loop
         playsInline
         preload="none"
-        poster="https://bcconciergerie.com/assets/video-poster.jpg"
+        poster="/_next/image?url=https%3A%2F%2Fbcconciergerie.com%2Fassets%2Fnosoffreaccu.jpg&w=1920&q=70"
         aria-label="Vidéo de présentation B&C Conciergerie - Gestion locative Côte d'Azur"
         title="B&C Conciergerie - Votre conciergerie de luxe sur la Côte d'Azur"
       >

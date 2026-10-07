@@ -8,63 +8,44 @@ import {
   FaHeart,
 } from "react-icons/fa";
 import "./apropos.css";
+import { pageMetadata } from "@/lib/seo";
 
 export async function generateMetadata({ params }) {
   const { locale } = await params;
   const isEn = locale === "en";
-  const title = isEn
-    ? "À Propos de B\u0026C Conciergerie Nice | Notre Histoire \u0026 Valeurs"
-    : "À Propos de B\u0026C Conciergerie Nice | Notre Histoire \u0026 Valeurs";
-  const description = isEn
-    ? "Discover B\u0026C Conciergerie Nice, your trusted partner for seasonal rental management in Nice. Our expertise, values, commitment."
-    : "Découvrez B\u0026C Conciergerie Nice, votre partenaire de confiance pour la gestion location saisonnière à Nice. Notre expertise, nos valeurs, notre engagement.";
-  return {
-    title,
-    description,
-    keywords: [
-      "conciergerie Airbnb Nice",
-      "location airbnb Nice",
-      "conciergerie Nice",
-      "gestion locative Nice",
-      "conciergerie villa Nice",
-      "conciergerie appartement Nice",
-      "location saisonnière Nice",
-      "gestion airbnb Nice",
-      "conciergerie de luxe Nice",
-      "gestion Airbnb Monaco",
-      "conciergerie premium Cannes",
-      "gestion de biens Antibes",
-    ],
-    openGraph: {
-      type: "website",
-      locale: isEn ? "en_GB" : "fr_FR",
-      url: `https://www.bcconciergerie.com/${locale}/a-propos`,
-      title,
-      description,
-      siteName: "B&C Conciergerie",
-      images: [
-        {
-          url: "https://www.bcconciergerie.com/icon_new.png",
-          width: 1200,
-          height: 630,
-          alt: "B&C Conciergerie About",
-        },
+  return pageMetadata({
+    locale,
+    path: "/a-propos",
+    title: isEn
+      ? "About B&C Conciergerie Nice | Our Story & Values"
+      : "À Propos de B&C Conciergerie Nice | Notre Histoire & Valeurs",
+    description: isEn
+      ? "Discover B&C Conciergerie, your trusted private concierge for short-term rental management in Nice. Our expertise, values and commitment."
+      : "Découvrez B&C Conciergerie Nice, votre partenaire de confiance pour la gestion location saisonnière à Nice. Notre expertise, nos valeurs, notre engagement.",
+    keywords: isEn
+      ? [
+        "Airbnb concierge Nice",
+        "Airbnb management Nice",
+        "short-term rental management Nice",
+        "holiday rental management French Riviera",
+        "property management Nice",
+        "vacation rental concierge Nice",
+        "Airbnb management Monaco",
+        "Airbnb concierge Cannes",
+      ]
+      : [
+        "conciergerie Airbnb Nice",
+        "conciergerie Nice",
+        "gestion locative Nice",
+        "gestion Airbnb Nice",
+        "location saisonnière Nice",
+        "conciergerie appartement Nice",
+        "conciergerie villa Nice",
+        "gestion Airbnb Monaco",
+        "conciergerie Cannes",
+        "gestion de biens Antibes",
       ],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title,
-      description,
-      images: ["https://www.bcconciergerie.com/icon_new.png"],
-    },
-    alternates: {
-      canonical: `https://www.bcconciergerie.com/${locale}/a-propos`,
-      languages: {
-        fr: "https://www.bcconciergerie.com/fr/a-propos",
-        en: "https://www.bcconciergerie.com/en/a-propos",
-      },
-    },
-  };
+  });
 }
 
 export default async function AProposPage({ params }) {

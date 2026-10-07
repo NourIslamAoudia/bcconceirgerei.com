@@ -27,9 +27,10 @@ export function proxy(request) {
     return NextResponse.next();
   }
 
-  // Redirect to default locale
-  url.pathname = `/${defaultLocale}${pathname}`;
-  return NextResponse.redirect(url, 307);
+  // Redirect to default locale. The bare root stays temporary (language
+  // entry point); any other un-prefixed path is a permanent move.
+  url.pathname = `/${defaultLocale}${pathname === "/" ? "" : pathname}`;
+  return NextResponse.redirect(url, pathname === "/" ? 307 : 308);
 }
 
 export const config = {
@@ -42,6 +43,6 @@ export const config = {
      * - favicon.ico (favicon file)
      * - public folder files (images, icons, manifests, etc.)
      */
-    "/((?!api|_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt|manifest.json|.*\\.png$|.*\\.jpg$|.*\\.jpeg$|.*\\.svg$|.*\\.gif$|.*\\.webp$|.*\\.ico$).*)",
+    "/((?!api|_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt|manifest.json|.*\\.png$|.*\\.jpg$|.*\\.jpeg$|.*\\.svg$|.*\\.gif$|.*\\.webp$|.*\\.avif$|.*\\.ico$|.*\\.html$|.*\\.txt$|.*\\.xml$|.*\\.mp4$|.*\\.webmanifest$).*)",
   ],
 };

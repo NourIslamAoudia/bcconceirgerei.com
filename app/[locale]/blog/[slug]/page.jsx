@@ -1,75 +1,125 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getBlogsData, getAllBlogSlugs } from "@/lib/getBlogsData";
+import { getBlogsData, getBlogSlugs, getRelatedBlogs } from "@/lib/getBlogsData";
 import { getAlternateBlogSlug } from "@/lib/blogSlugMap";
+import {
+  SITE_URL,
+  SITE_NAME,
+  OG_IMAGE,
+  ORGANIZATION_ID,
+  WEBSITE_ID,
+  ogLocale,
+  jsonLdScriptProps,
+} from "@/lib/seo";
 import "../blog.css";
 
-export async function generateStaticParams() {
-  const slugs = getAllBlogSlugs();
-  return slugs.map((slug) => ({
-    slug,
-  }));
+export const dynamicParams = false;
+
+export async function generateStaticParams({ params }) {
+  const { locale } = params;
+  return getBlogSlugs(locale).map((slug) => ({ slug }));
+}
+
+function findBlog(locale, slug) {
+  return getBlogsData(locale).blogs.find((b) => b.slug === slug);
+}
+
+/**
+ * Renders plain-text article content as semantic HTML: blank lines split
+ * paragraphs, consecutive "- " lines become a bullet list.
+ */
+function RichText({ text, className }) {
+  const blocks = text.split(/\n{2,}/);
+  return (
+    <div className={className}>
+      {blocks.map((block, i) => {
+        const lines = block.split("\n");
+        const items = lines.filter((l) => l.startsWith("- "));
+        if (items.length === 0) {
+          return <p key={i}>{block}</p>;
+        }
+        const lead = lines.filter((l) => !l.startsWith("- ")).join("\n");
+        return (
+          <div key={i}>
+            {lead && <p>{lead}</p>}
+            <ul>
+              {items.map((item, j) => (
+                <li key={j}>{item.slice(2)}</li>
+              ))}
+            </ul>
+          </div>
+        );
+      })}
+    </div>
+  );
 }
 
 export async function generateMetadata({ params }) {
   const { locale, slug } = await params;
-  const blogsData = getBlogsData(locale);
-  const blog = blogsData.blogs.find((b) => b.slug === slug);
+  const blog = findBlog(locale, slug);
 
   if (!blog) {
-    return { title: "Article introuvable" };
+    return { title: "Article introuvable", robots: { index: false } };
   }
 
+  const url = `${SITE_URL}/${locale}/blog/${slug}`;
+  const frSlug = getAlternateBlogSlug(slug, locale, "fr");
+  const enSlug = getAlternateBlogSlug(slug, locale, "en");
+
   return {
-    title: `${blog.title} | B&C Conciergerie`,
+    title: `${blog.title} | ${SITE_NAME}`,
     description: blog.excerpt,
     keywords: blog.tags,
-    authors: [{ name: blog.author }],
+    authors: [{ name: blog.author, url: SITE_URL }],
     alternates: {
-      canonical: `https://www.bcconciergerie.com/${locale}/blog/${slug}`,
+      canonical: url,
       languages: {
-        fr: `https://www.bcconciergerie.com/fr/blog/${getAlternateBlogSlug(slug, locale, "fr")}`,
-        en: `https://www.bcconciergerie.com/en/blog/${getAlternateBlogSlug(slug, locale, "en")}`,
+        fr: `${SITE_URL}/fr/blog/${frSlug}`,
+        en: `${SITE_URL}/en/blog/${enSlug}`,
+        "x-default": `${SITE_URL}/fr/blog/${frSlug}`,
       },
     },
     openGraph: {
       type: "article",
-      locale: locale === "en" ? "en_GB" : "fr_FR",
-      url: `https://www.bcconciergerie.com/${locale}/blog/${slug}`,
+      locale: ogLocale(locale),
+      url,
       title: blog.title,
       description: blog.excerpt,
-      siteName: "B&C Conciergerie",
+      siteName: SITE_NAME,
       publishedTime: blog.date,
-      modifiedTime: blog.date,
+      modifiedTime: blog.updated || blog.date,
       authors: [blog.author],
+      section: blog.category,
       tags: blog.tags,
-      images: [
-        {
-          url: "https://www.bcconciergerie.com/icon_new.png",
-          width: 1200,
-          height: 630,
-          alt: blog.title,
-        },
-      ],
+      images: [{ ...OG_IMAGE, alt: blog.title }],
     },
     twitter: {
       card: "summary_large_image",
       title: blog.title,
       description: blog.excerpt,
-      images: ["https://www.bcconciergerie.com/icon_new.png"],
+      images: [OG_IMAGE.url],
     },
   };
 }
 
 export default async function BlogDetailPage({ params }) {
   const { locale, slug } = await params;
-  const blogsData = getBlogsData(locale);
-  const blog = blogsData.blogs.find((b) => b.slug === slug);
+  const blog = findBlog(locale, slug);
   const isEn = locale === "en";
 
   if (!blog) {
     notFound();
   }
+
+  const url = `${SITE_URL}/${locale}/blog/${slug}`;
+  const related = getRelatedBlogs(locale, blog);
+  const wordCount = [
+    blog.content.introduction,
+    ...blog.content.sections.flatMap((s) => [s.title, s.content]),
+    ...(blog.content.faq || []).flatMap((f) => [f.question, f.answer]),
+  ]
+    .join(" ")
+    .split(/\s+/).length;
 
   const { content } = blog;
 
@@ -77,32 +127,25 @@ export default async function BlogDetailPage({ params }) {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
-    mainEntityOfPage: {
-      "@type": "WebPage",
-      "@id": `https://www.bcconciergerie.com/${locale}/blog/${slug}`,
-    },
+    "@id": `${url}#article`,
+    mainEntityOfPage: { "@type": "WebPage", "@id": url },
     headline: blog.title,
     description: blog.excerpt,
-    image: "https://www.bcconciergerie.com/icon_new.png",
+    image: OG_IMAGE.url,
     author: {
       "@type": "Organization",
+      "@id": ORGANIZATION_ID,
       name: blog.author,
-      url: "https://www.bcconciergerie.com",
+      url: SITE_URL,
     },
+    publisher: { "@id": ORGANIZATION_ID },
+    isPartOf: { "@id": WEBSITE_ID },
     datePublished: blog.date,
-    dateModified: blog.date,
+    dateModified: blog.updated || blog.date,
     keywords: blog.tags.join(", "),
-    inLanguage: locale === "en" ? "en" : "fr",
-    publisher: {
-      "@type": "Organization",
-      name: "B&C Conciergerie",
-      url: "https://www.bcconciergerie.com",
-      logo: {
-        "@type": "ImageObject",
-        url: "https://www.bcconciergerie.com/icon_new.png",
-      },
-    },
     articleSection: blog.category,
+    wordCount,
+    inLanguage: locale,
   };
 
   // JSON-LD BreadcrumbList
@@ -114,19 +157,19 @@ export default async function BlogDetailPage({ params }) {
         "@type": "ListItem",
         position: 1,
         name: isEn ? "Home" : "Accueil",
-        item: `https://www.bcconciergerie.com/${locale}`,
+        item: `${SITE_URL}/${locale}`,
       },
       {
         "@type": "ListItem",
         position: 2,
         name: "Blog",
-        item: `https://www.bcconciergerie.com/${locale}/blog`,
+        item: `${SITE_URL}/${locale}/blog`,
       },
       {
         "@type": "ListItem",
         position: 3,
         name: blog.title,
-        item: `https://www.bcconciergerie.com/${locale}/blog/${slug}`,
+        item: `${url}`,
       },
     ],
   };
@@ -150,19 +193,10 @@ export default async function BlogDetailPage({ params }) {
 
   return (
     <div className="blog-detail-page">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
-      />
+      <script {...jsonLdScriptProps(jsonLd)} />
+      <script {...jsonLdScriptProps(breadcrumbJsonLd)} />
       {faqJsonLd && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
-        />
+        <script {...jsonLdScriptProps(faqJsonLd)} />
       )}
 
       {/* Hero */}
@@ -183,12 +217,12 @@ export default async function BlogDetailPage({ params }) {
           <div className="blog-detail-meta">
             <span className="blog-detail-category">{blog.category}</span>
             <span className="blog-detail-dot" />
-            <span className="blog-detail-date">
+            <time className="blog-detail-date" dateTime={blog.date}>
               {new Date(blog.date).toLocaleDateString(
                 locale === "en" ? "en-GB" : "fr-FR",
                 { year: "numeric", month: "long", day: "numeric" },
               )}
-            </span>
+            </time>
             <span className="blog-detail-dot" />
             <span className="blog-detail-readtime">{blog.readTime}</span>
           </div>
@@ -200,13 +234,13 @@ export default async function BlogDetailPage({ params }) {
       {/* Article Content */}
       <article className="blog-detail-content">
         {/* Introduction */}
-        <div className="blog-introduction">{content.introduction}</div>
+        <RichText className="blog-introduction" text={content.introduction} />
 
         {/* Sections */}
         {content.sections.map((section, index) => (
           <section key={index} className="blog-section">
             <h2 className="blog-section-title">{section.title}</h2>
-            <div className="blog-section-content">{section.content}</div>
+            <RichText className="blog-section-content" text={section.content} />
           </section>
         ))}
 
@@ -240,6 +274,43 @@ export default async function BlogDetailPage({ params }) {
               {isEn ? "Contact us" : "Contactez-nous"}
             </a>
           </div>
+        )}
+
+        {/* Related articles (internal linking) */}
+        {related.length > 0 && (
+          <nav
+            className="blog-related"
+            aria-label={isEn ? "Related articles" : "Articles similaires"}
+          >
+            <h2 className="blog-related-title">
+              {isEn ? "Related articles" : "À lire aussi"}
+            </h2>
+            <ul className="blog-related-list">
+              {related.map((r) => (
+                <li key={r.slug} className="blog-related-item">
+                  <Link href={`/${locale}/blog/${r.slug}`}>
+                    <span className="blog-related-category">{r.category}</span>
+                    <span className="blog-related-name">{r.title}</span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+            <p className="blog-related-services">
+              {isEn
+                ? "Want to delegate your rental? Discover our "
+                : "Vous souhaitez déléguer votre location ? Découvrez nos "}
+              <Link href={`/${locale}/services`}>
+                {isEn
+                  ? "Airbnb concierge services in Nice"
+                  : "services de conciergerie Airbnb à Nice"}
+              </Link>
+              {isEn ? " and our " : " et nos "}
+              <Link href={`/${locale}/offres`}>
+                {isEn ? "management offers" : "offres de gestion"}
+              </Link>
+              .
+            </p>
+          </nav>
         )}
 
         {/* Author */}

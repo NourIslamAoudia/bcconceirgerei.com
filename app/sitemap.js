@@ -1,33 +1,37 @@
-import { getBlogsData, getAllBlogSlugs } from "@/lib/getBlogsData";
+import { getBlogsData } from "@/lib/getBlogsData";
 import { getAlternateBlogSlug } from "@/lib/blogSlugMap";
+import { SITE_URL, LOCALES, DEFAULT_LOCALE } from "@/lib/seo";
 
 export default function sitemap() {
-  const baseUrl = "https://www.bcconciergerie.com";
-  const currentDate = new Date().toISOString();
-  const locales = ["fr", "en"];
-
   const pages = [
     { path: "", changeFrequency: "weekly", priority: 1.0 },
-    { path: "/services", changeFrequency: "monthly", priority: 0.8 },
+    { path: "/services", changeFrequency: "monthly", priority: 0.9 },
     { path: "/offres", changeFrequency: "monthly", priority: 0.8 },
-    { path: "/a-propos", changeFrequency: "monthly", priority: 0.5 },
-    { path: "/blog", changeFrequency: "weekly", priority: 0.9 },
+    { path: "/blog", changeFrequency: "weekly", priority: 0.8 },
+    { path: "/a-propos", changeFrequency: "monthly", priority: 0.6 },
   ];
+
+  // Most recent visible article date = last content update of the site
+  const latestBlogDate = LOCALES.flatMap((l) => getBlogsData(l).blogs)
+    .map((b) => b.date)
+    .sort()
+    .at(-1);
 
   const entries = [];
 
   // Static pages
   for (const page of pages) {
-    for (const locale of locales) {
+    for (const locale of LOCALES) {
       entries.push({
-        url: `${baseUrl}/${locale}${page.path}`,
-        lastModified: currentDate,
+        url: `${SITE_URL}/${locale}${page.path}`,
+        lastModified: latestBlogDate,
         changeFrequency: page.changeFrequency,
         priority: page.priority,
         alternates: {
           languages: {
-            fr: `${baseUrl}/fr${page.path}`,
-            en: `${baseUrl}/en${page.path}`,
+            fr: `${SITE_URL}/fr${page.path}`,
+            en: `${SITE_URL}/en${page.path}`,
+            "x-default": `${SITE_URL}/${DEFAULT_LOCALE}${page.path}`,
           },
         },
       });
@@ -35,18 +39,19 @@ export default function sitemap() {
   }
 
   // Blog article pages
-  for (const locale of locales) {
-    const blogsData = getBlogsData(locale);
-    for (const blog of blogsData.blogs) {
+  for (const locale of LOCALES) {
+    for (const blog of getBlogsData(locale).blogs) {
+      const frSlug = getAlternateBlogSlug(blog.slug, locale, "fr");
       entries.push({
-        url: `${baseUrl}/${locale}/blog/${blog.slug}`,
-        lastModified: blog.date || currentDate,
+        url: `${SITE_URL}/${locale}/blog/${blog.slug}`,
+        lastModified: blog.date,
         changeFrequency: "monthly",
         priority: 0.7,
         alternates: {
           languages: {
-            fr: `${baseUrl}/fr/blog/${getAlternateBlogSlug(blog.slug, locale, "fr")}`,
-            en: `${baseUrl}/en/blog/${getAlternateBlogSlug(blog.slug, locale, "en")}`,
+            fr: `${SITE_URL}/fr/blog/${frSlug}`,
+            en: `${SITE_URL}/en/blog/${getAlternateBlogSlug(blog.slug, locale, "en")}`,
+            "x-default": `${SITE_URL}/fr/blog/${frSlug}`,
           },
         },
       });

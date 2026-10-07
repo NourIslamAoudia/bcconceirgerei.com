@@ -106,17 +106,17 @@ const nextConfig = {
       {
         source: '/services',
         destination: '/fr/services',
-        permanent: false,
+        permanent: true,
       },
       {
         source: '/offres',
         destination: '/fr/offres',
-        permanent: false,
+        permanent: true,
       },
       {
         source: '/a-propos',
         destination: '/fr/a-propos',
-        permanent: false,
+        permanent: true,
       },
     ];
   },

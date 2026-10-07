@@ -8,39 +8,51 @@ import NosOffres from "@/components/NosOffres";
 import NosLogements from "@/components/NosLogements";
 import BlogSection from "@/components/BlogSection";
 import { getTranslations } from "@/lib/getTranslations";
+import {
+  pageMetadata,
+  jsonLdScriptProps,
+  SITE_URL,
+  WEBSITE_ID,
+  ORGANIZATION_ID,
+  OG_IMAGE,
+} from "@/lib/seo";
 
 export async function generateMetadata({ params }) {
   const { locale } = await params;
   const isEn = locale === "en";
-  return {
+  return pageMetadata({
+    locale,
+    path: "",
     title: isEn
-      ? "Airbnb Concierge in Nice | Short-Term Rental Management \u2013 B\u0026C"
-      : "Conciergerie Airbnb Nice | Gestion Location Saisonnière – B\u0026C",
+      ? "Airbnb Concierge in Nice | Short-Term Rental Management – B&C"
+      : "Conciergerie Airbnb à Nice | Gestion Location Saisonnière – B&C",
     description: isEn
-      ? "Premium concierge services in Nice. Airbnb management, professional cleaning, optimized revenue. Nice, Monaco, Cannes. Free quote."
+      ? "Airbnb concierge in Nice: full short-term rental management, professional cleaning, guest check-in and optimised revenue. Nice, Monaco, Cannes. Free estimate."
       : "Conciergerie Airbnb à Nice haut de gamme pour la gestion location saisonnière. De Nice à Monaco et Cannes. Revenus locatifs optimisés. Devis gratuit.",
-    keywords: [
-      "conciergerie Airbnb Nice",
-      "location airbnb Nice",
-      "conciergerie Nice",
-      "gestion locative Nice",
-      "conciergerie villa Nice",
-      "conciergerie appartement Nice",
-      "location saisonnière Nice",
-      "gestion airbnb Nice",
-      "conciergerie de luxe Nice",
-      "gestion Airbnb Monaco",
-      "conciergerie premium Cannes",
-      "gestion de biens Antibes",
-    ],
-    alternates: {
-      canonical: `https://www.bcconciergerie.com/${locale}`,
-      languages: {
-        fr: "https://www.bcconciergerie.com/fr",
-        en: "https://www.bcconciergerie.com/en",
-      },
-    },
-  };
+    keywords: isEn
+      ? [
+        "Airbnb concierge Nice",
+        "Airbnb management Nice",
+        "short-term rental management Nice",
+        "holiday rental management French Riviera",
+        "property management Nice",
+        "vacation rental concierge Nice",
+        "Airbnb management Monaco",
+        "Airbnb concierge Cannes",
+      ]
+      : [
+        "conciergerie Airbnb Nice",
+        "conciergerie Nice",
+        "gestion locative Nice",
+        "gestion Airbnb Nice",
+        "location saisonnière Nice",
+        "conciergerie appartement Nice",
+        "conciergerie villa Nice",
+        "gestion Airbnb Monaco",
+        "conciergerie Cannes",
+        "gestion de biens Antibes",
+      ],
+  });
 }
 
 export default async function HomePage({ params }) {
@@ -48,47 +60,26 @@ export default async function HomePage({ params }) {
   const t = getTranslations(locale);
   const isEn = locale === "en";
 
-  const websiteJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    name: "B&C Conciergerie",
-    url: "https://www.bcconciergerie.com",
-    inLanguage: isEn ? "en" : "fr",
-    publisher: {
-      "@type": "Organization",
-      name: "B\u0026C Conciergerie Nice",
-      url: "https://www.bcconciergerie.com",
-      logo: "https://www.bcconciergerie.com/icon_new.png",
-    },
-  };
-
   const webPageJsonLd = {
     "@context": "https://schema.org",
     "@type": "WebPage",
+    "@id": `${SITE_URL}/${locale}#webpage`,
+    url: `${SITE_URL}/${locale}`,
     name: isEn
-      ? "Airbnb Concierge in Nice | Short-Term Rental Management \u2013 B\u0026C"
-      : "Conciergerie Airbnb \u00e0 Nice | Gestion Location Saisonni\u00e8re \u2013 B\u0026C",
+      ? "Airbnb Concierge in Nice | Short-Term Rental Management – B&C"
+      : "Conciergerie Airbnb à Nice | Gestion Location Saisonnière – B&C",
     description: isEn
       ? "Premium concierge services in Nice. Airbnb management, professional cleaning, optimized revenue."
-      : "Conciergerie Airbnb \u00e0 Nice haut de gamme. Gestion location saisonni\u00e8re, m\u00e9nage professionnel, revenus optimis\u00e9s.",
-    url: `https://www.bcconciergerie.com/${locale}`,
-    inLanguage: isEn ? "en" : "fr",
-    isPartOf: {
-      "@type": "WebSite",
-      url: "https://www.bcconciergerie.com",
-    },
+      : "Conciergerie Airbnb à Nice haut de gamme. Gestion location saisonnière, ménage professionnel, revenus optimisés.",
+    inLanguage: locale,
+    isPartOf: { "@id": WEBSITE_ID },
+    about: { "@id": ORGANIZATION_ID },
+    primaryImageOfPage: OG_IMAGE.url,
   };
 
   return (
     <div className="home-page">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageJsonLd) }}
-      />
+      <script {...jsonLdScriptProps(webPageJsonLd)} />
       <HeroSection
         title={t("hero.title")}
         subtitle={t("hero.subtitle")}

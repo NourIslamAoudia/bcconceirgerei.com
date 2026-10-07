@@ -6,8 +6,10 @@ import Script from "next/script";
  * to prevent render blocking and improve FCP/LCP
  */
 export default function Analytics() {
-  // Replace with your actual Google Analytics ID
-  const GA_ID = process.env.NEXT_PUBLIC_GA_ID || "G-XXXXXXXXXX";
+  // Set NEXT_PUBLIC_GA_ID (e.g. G-ABC123) in the environment to enable GA
+  const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
+
+  if (!GA_ID) return null;
 
   return (
     <>

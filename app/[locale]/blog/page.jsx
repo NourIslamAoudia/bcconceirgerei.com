@@ -1,71 +1,37 @@
 import Link from "next/link";
 import { getBlogsData } from "@/lib/getBlogsData";
 import { getTranslations } from "@/lib/getTranslations";
+import { pageMetadata, jsonLdScriptProps, SITE_URL, WEBSITE_ID, ORGANIZATION_ID } from "@/lib/seo";
 import "./blog.css";
 
 export async function generateMetadata({ params }) {
   const { locale } = await params;
   const isEn = locale === "en";
-  return {
+  return pageMetadata({
+    locale,
+    path: "/blog",
     title: isEn
-      ? "Blog - Airbnb Management Tips | B&C Conciergerie Côte d'Azur"
-      : "Blog - Conseils Gestion Airbnb | B&C Conciergerie Côte d'Azur",
+      ? "Airbnb in Nice Blog: Regulations, Profitability & Tips | B&C Conciergerie"
+      : "Blog Airbnb Nice : Réglementation, Rentabilité & Conseils | B&C Conciergerie",
     description: isEn
       ? "Expert tips and guides for Airbnb owners in Nice. Regulations, profitability, management and optimization of your short-term rental on the French Riviera."
       : "Conseils et guides experts pour propriétaires Airbnb à Nice. Réglementation, rentabilité, gestion et optimisation de votre location saisonnière sur la Côte d'Azur.",
     keywords: isEn
       ? [
           "airbnb nice blog",
+          "airbnb regulations nice",
+          "short-term rental guide nice",
+          "airbnb profitability nice",
           "rental management tips",
-          "short-term rental guide",
-          "nice regulations airbnb",
-          "airbnb profitability",
         ]
       : [
           "blog airbnb nice",
-          "conseils gestion locative",
-          "guide location saisonnière",
           "réglementation airbnb nice",
-          "rentabilité airbnb",
+          "guide location saisonnière nice",
+          "rentabilité airbnb nice",
+          "conseils gestion locative",
         ],
-    openGraph: {
-      type: "website",
-      locale: isEn ? "en_GB" : "fr_FR",
-      url: `https://www.bcconciergerie.com/${locale}/blog`,
-      title: isEn
-        ? "Blog - Airbnb Management Tips | B&C Conciergerie"
-        : "Blog - Conseils Gestion Airbnb | B&C Conciergerie",
-      description: isEn
-        ? "Expert tips and guides for Airbnb owners on the French Riviera."
-        : "Conseils et guides experts pour propriétaires Airbnb sur la Côte d'Azur.",
-      siteName: "B&C Conciergerie",
-      images: [
-        {
-          url: "https://www.bcconciergerie.com/icon_new.png",
-          width: 1200,
-          height: 630,
-          alt: "B&C Conciergerie Blog",
-        },
-      ],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: isEn
-        ? "Blog - Airbnb Tips | B&C Conciergerie"
-        : "Blog - Conseils Airbnb | B&C Conciergerie",
-      description: isEn
-        ? "Expert tips for Airbnb owners on the French Riviera."
-        : "Conseils experts pour propriétaires Airbnb sur la Côte d'Azur.",
-      images: ["https://www.bcconciergerie.com/icon_new.png"],
-    },
-    alternates: {
-      canonical: `https://www.bcconciergerie.com/${locale}/blog`,
-      languages: {
-        fr: "https://www.bcconciergerie.com/fr/blog",
-        en: "https://www.bcconciergerie.com/en/blog",
-      },
-    },
-  };
+  });
 }
 
 export default async function BlogPage({ params }) {
@@ -83,19 +49,16 @@ export default async function BlogPage({ params }) {
     description: isEn
       ? "Expert tips and guides for Airbnb owners on the French Riviera"
       : "Conseils et guides experts pour propriétaires Airbnb sur la Côte d'Azur",
-    url: `https://www.bcconciergerie.com/${locale}/blog`,
-    publisher: {
-      "@type": "Organization",
-      name: "B&C Conciergerie",
-      url: "https://www.bcconciergerie.com",
-      logo: "https://www.bcconciergerie.com/icon_new.png",
-    },
+    url: `${SITE_URL}/${locale}/blog`,
+    inLanguage: locale,
+    isPartOf: { "@id": WEBSITE_ID },
+    publisher: { "@id": ORGANIZATION_ID },
     mainEntity: {
       "@type": "ItemList",
       itemListElement: blogs.map((blog, index) => ({
         "@type": "ListItem",
         position: index + 1,
-        url: `https://www.bcconciergerie.com/${locale}/blog/${blog.slug}`,
+        url: `${SITE_URL}/${locale}/blog/${blog.slug}`,
         name: blog.title,
       })),
     },
@@ -103,16 +66,15 @@ export default async function BlogPage({ params }) {
 
   return (
     <div className="blog-page">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(blogListJsonLd) }}
-      />
+      <script {...jsonLdScriptProps(blogListJsonLd)} />
 
       {/* Hero */}
       <section className="blog-hero">
         <div className="blog-hero-content">
           <h1 className="blog-hero-title">
-            {isEn ? "Our Blog" : "Notre Blog"}
+            {isEn
+              ? "Airbnb in Nice: our owner's blog"
+              : "Blog Airbnb à Nice : conseils aux propriétaires"}
           </h1>
           <p className="blog-hero-subtitle">
             {isEn
@@ -140,7 +102,9 @@ export default async function BlogPage({ params }) {
                   <span className="blog-card-dot" />
                   <span className="blog-card-readtime">{blog.readTime}</span>
                 </div>
-                <h2 className="blog-card-title">{blog.title}</h2>
+                <h2 className="blog-card-title">
+                  <Link href={`/${locale}/blog/${blog.slug}`}>{blog.title}</Link>
+                </h2>
               </div>
 
               <div className="blog-card-body">
